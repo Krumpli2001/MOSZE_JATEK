@@ -5,10 +5,7 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
-#include <ShlObj_core.h>
 
-#define MAGASSAG 21
-#define SZELESSEG 54
 
 using namespace std;
 
@@ -58,38 +55,72 @@ public:
     int getY() { return y; }
 };
 
+class gyujteni
+{
+private:
+    int x, y;
+public:
+    gyujteni() { x = -1; y = -1; }
+    gyujteni(int koordX, int koordY)
+    {
+        x = koordX;
+        y = koordY;
+    }
+
+    int getX() { return x; }
+    int getY() { return y; }
+    gyujteni& setX( int x );
+    gyujteni& setY( int y );
+};
+
 class jatekmenet
 {
 private:
     bool kilep;
     int cp;
     int mentes_szama;
-    char palya[MAGASSAG][SZELESSEG];
+    char** palya;
     jatekos* jancsi;
     elenseg* boss;
+    gyujteni* coll;
+
 public:
-    jatekmenet()
+    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, char** palya, bool van_e_gyujteni, int collX, int collY)
     {
-        jancsi = new jatekos(1,2,3);
-        boss = new elenseg(15, 20);
-        kilep = false;
-        cp = 0;
-        mentes_szama = 0;
-        for (int i = 0; i < MAGASSAG; i++)
+        //Jancsi letrehozasa
+        jancsi = new jatekos(jancsiX, jancsiY, jancsihp);
+
+        //boss letrehozasa
+        if (van_e_boss)
         {
-            for (int j = 0; j < SZELESSEG; j++)
-            {
-                palya[i][j] = '0';
-            }
+            boss = new elenseg(bossX, bossY);
         }
+
+        //gyujtogethetok letrehozasa
+        if (van_e_gyujteni)
+        {
+            coll = new gyujteni(collX, collY);
+        }
+
+        kilep = false;
+
+        cp = 0;
+
+        mentes_szama = 0;
+
+        palya = nullptr;
     }
     ~jatekmenet()
     {
         delete jancsi;
-        delete boss;
+        if (boss) { delete boss; }
+        if (coll) { delete coll; }
     }
+
     int getCP() { return cp; }
-    void setCP( int cpszam );
+
+    jatekmenet& setCP( int cpszam );
+
     int getM_S() { return mentes_szama; }
     void mentes(jatekos& jatekosunk, int mentes_szama);
     void mentes_be(jatekos& jatekosunk, int mentes_szama);

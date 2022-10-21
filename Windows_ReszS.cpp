@@ -41,9 +41,22 @@ void elenseg::Reset()
     y = eredeti_y;
 }
 
-void jatekmenet::setCP(int cpszam)
+gyujteni& gyujteni::setX(int koordX)
+{
+    x = koordX;
+    return *this;
+}
+
+gyujteni& gyujteni::setY(int koordX)
+{
+    y = koordX;
+    return *this;
+}
+
+jatekmenet& jatekmenet::setCP(int cpszam)
 {
     cp = cpszam;
+    return *this;
 }
 
 //mentes
