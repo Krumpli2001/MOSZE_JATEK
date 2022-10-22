@@ -221,7 +221,7 @@ bool jatekmenet::lepes(jatekmenet& j)
         if (hit == 'r')
         {
             jancsi->Reset();
-            boss->Reset();
+            //boss->Reset();
             return true;
         }
         else
@@ -283,6 +283,8 @@ void jatekmenet::kiir(jatekmenet& j)
                 }
                 cout << endl;
             }
+            cout << "\nIRANYITAS: WASD, PALYA UJRAKEZDESE: R, KILEPES: Q\n";
+            cout << "Eleteid: " << jancsi->getElet();
         }
     }
 }
