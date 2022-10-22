@@ -239,8 +239,8 @@ void jatekmenet::kiir(jatekmenet& j)
 {
     bool leptunk_e;
     COORD ccoord;
-    ccoord.X = 1;
-    ccoord.Y = 1;
+    ccoord.X = 0;
+    ccoord.Y = 0;
     while (!kilep) {
         leptunk_e = false;
 
