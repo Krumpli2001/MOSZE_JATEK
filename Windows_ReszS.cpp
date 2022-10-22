@@ -238,7 +238,7 @@ bool jatekmenet::lepes(jatekmenet& j)
 void jatekmenet::kiir(jatekmenet& j)
 {
     bool leptunk_e;
-    while (true) {
+    while (!kilep) {
         leptunk_e = false;
 
         leptunk_e = lepes(j);
