@@ -238,6 +238,8 @@ bool jatekmenet::lepes(jatekmenet& j)
 void jatekmenet::kiir(jatekmenet& j)
 {
     bool leptunk_e;
+    bool elso_kiiras = true;
+    
     COORD ccoord;
     ccoord.X = 0;
     ccoord.Y = 0;
@@ -246,8 +248,9 @@ void jatekmenet::kiir(jatekmenet& j)
 
         leptunk_e = lepes(j);
 
-        if (leptunk_e)
+        if (leptunk_e or elso_kiiras)
         {
+            elso_kiiras = false;
             //system("cls");
             SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), ccoord);
 
