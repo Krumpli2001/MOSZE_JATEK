@@ -105,24 +105,68 @@ void jatekmenet::mentes_be(jatekos& jatekosunk, int mentes_szama)
 }
 
 //palya beolvasasa
-void jatekmenet::beolvas(string palyanev, jatekmenet& j)
+jatekmenet& jatekmenet::beolvas(jatekmenet& j, string palyanev)
 {
+
+    string egysor;
+
     ifstream f(palyanev);
-    string sor;
+    int karakterek = 0;
+    int sorok = 0;
+
+
     if (f.is_open())
     {
-        while (getline(f, sor))
-        {
-            for (int i = 0; i < MAGASSAG; i++)
-            {
-                for (int j = 0; j < SZELESSEG; j++)
-                {
-                    palya[i][j] = sor[j];
-                }
-            }
+        //palya meretenek meghatarozasa
+        while (getline(f, egysor)) {
 
+            //cout << egysor << endl;
+            sorok++;
         }
+        karakterek += egysor.length();
+        f.clear();
+        f.seekg(0);
+
+        j.magassag = sorok;
+        j.szelsseg = karakterek;
+
+        //matrix letrehozasa
+        j.palya = new char* [sorok];
+        for (int i = 0; i < sorok; i++) {
+            j.palya[i] = new char[karakterek];
+        }
+
+        //matrix feltoltese
+        int sor = 0;
+        while (getline(f, egysor)) {
+            for (int i = 0; i < karakterek; i++) {   
+                j.palya[sor][i] = egysor[i];
+            }
+            sor++;
+        }
+
     }
+    f.close();
+    //cout << endl << karakterek << endl << sorok << endl;
+
+    /*for (int k = 0; k < sorok; k++) {
+        for (int l = 0; l < karakterek; l++) {
+            palya[k][l] = '0';
+        }
+    }*/
+
+    //gyors teszt h beolvasta-e
+   /* for (int i = 0; i < sorok; i++) {
+        for (int j = 0; j < karakterek; j++) {
+            cout << palya[i][j];
+        }
+        cout << endl;
+    }*/
+
+
+
+    //system("pause");
+    return *this;
 }
 
 //OMFG MOZOG!!!
@@ -191,43 +235,60 @@ bool jatekmenet::lepes(jatekmenet& j)
 }
 
 //palya kirajzolasa
-void jatekmenet::kiir(jatekmenet& j, bool leptunk_e)
+void jatekmenet::kiir(jatekmenet& j)
 {
-    if (leptunk_e)
-    {
-        system("cls");
-    }
-    for (int i = 0; i < MAGASSAG; i++)
-    {
-        for (int j = 0; j < SZELESSEG; j++)
+    bool leptunk_e;
+    while (true) {
+        leptunk_e = false;
+
+        leptunk_e = lepes(j);
+
+        if (leptunk_e)
         {
-            //"lenyek"
-            int jancsi_X = jancsi->getX();
-            int Jancsi_Y = jancsi->getY();
-            int ellllenseg_X = boss->getX();
-            int ellllenseg_Y = boss->getY();
+            system("cls");
 
-            if (jancsi_X == j and Jancsi_Y == i)
+            for (int i = 0; i < j.magassag; i++)
             {
-                cout << "J";
+                for (int j = 0; j < szelsseg; j++)
+                {
+                    //"lenyek"
+                    int jancsi_X = jancsi->getX();
+                    int Jancsi_Y = jancsi->getY();
+
+                    int ellllenseg_X = -1;
+                    int ellllenseg_Y = -1;
+
+                    if (boss) {
+                        ellllenseg_X = boss->getX();
+                        ellllenseg_Y = boss->getY();
+                    }
+
+                    if (jancsi_X == j and Jancsi_Y == i)
+                    {
+                        cout << "J";
+                    }
+
+                    else if (boss) {
+                        if (ellllenseg_X == j and ellllenseg_Y == i)
+                        {
+                            cout << "S";
+                        }
+                    }
+                    else
+                        cout << palya[i][j];
+                }
+                cout << endl;
             }
-            else if (ellllenseg_X == j and ellllenseg_Y == i)
-            {
-                cout << "S";
-            }
-            else
-                cout << palya[i][j];
         }
-        cout << endl;
     }
 }
 
-void jatekmenet::fut(jatekmenet& j)
-{
-    bool leptunk = true;
-    while (!kilep, leptunk)
-    {
-        kiir(j, leptunk);
-        leptunk = lepes(j);
-    }
-}
+//void jatekmenet::fut(jatekmenet& j)
+//{
+//    bool leptunk = true;
+//    while (!kilep, leptunk)
+//    {
+//        kiir(j, leptunk);
+//        leptunk = lepes(j);
+//    }
+//}

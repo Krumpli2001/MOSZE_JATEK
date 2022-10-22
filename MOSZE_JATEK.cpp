@@ -5,9 +5,11 @@
 
 int main()
 {
-	jatekmenet j;
-	j.beolvas("Text.txt", j);
-	j.fut(j);
+	//int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, char** palya, bool van_e_gyujteni, int collX, int collY
+	jatekmenet j(4, 5, 3, false, 0, 0, nullptr, false, 0, 0);
+	j.beolvas(j,"Text.txt");
+	j.kiir(j);
+	//j.fut(j);
 }
 
 
