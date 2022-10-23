@@ -40,17 +40,13 @@ class elenseg
 {
 private:
     int x, y;
-    int eredeti_x, eredeti_y;
 public:
     elenseg(int koordX, int koordY)
     {
-        eredeti_x = koordX;
-        eredeti_y = koordY;
         x = koordX;
         y = koordY;
     }
 
-    void Reset();
     int getX() { return x; }
     int getY() { return y; }
 };
@@ -78,7 +74,6 @@ class jatekmenet
 private:
     bool kilep;
     int cp;
-    int mentes_szama;
     char** palya;
     int magassag;
     int szelsseg;
@@ -87,7 +82,7 @@ private:
     gyujteni* coll;
 
 public:
-    jatekmenet() { kilep = false; cp = 0; mentes_szama = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
+    jatekmenet() { kilep = false; cp = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
     jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, char** palya, bool van_e_gyujteni, int collX, int collY)
     {
         //Jancsi letrehozasa
@@ -117,8 +112,6 @@ public:
 
         cp = 0;
 
-        mentes_szama = 0;
-
         palya = nullptr;
         magassag = 0;
         szelsseg = 0;
@@ -131,19 +124,20 @@ public:
     }
 
     int getCP() { return cp; }
-    int getM_S() { return mentes_szama; }
+
+    jatekmenet& setKilep(bool kilepo);
 
     jatekmenet& setCP( int cpszam );
 
-    void mentes(jatekos& jatekosunk, int mentes_szama);
+    void mentes(jatekmenet& jatekosunk);
 
-    void mentes_be(jatekos& jatekosunk, int mentes_szama);
+    void mentes_be(string mentes_neve);
 
     jatekmenet& beolvas(jatekmenet& j, string palyanev);
 
     bool lepes(jatekmenet& j);
 
-    void kiir(jatekmenet& j);
+    void kiir(jatekmenet& j, char boss_jele);
 
     //void fut(jatekmenet& j);
 

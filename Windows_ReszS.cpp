@@ -34,13 +34,6 @@ void jatekos::MozgasJobbra()
     x++;
 }
 
-//elenseg reset
-void elenseg::Reset()
-{
-    x = eredeti_x;
-    y = eredeti_y;
-}
-
 gyujteni& gyujteni::setX(int koordX)
 {
     x = koordX;
@@ -59,34 +52,58 @@ jatekmenet& jatekmenet::setCP(int cpszam)
     return *this;
 }
 
-//mentes
-void jatekmenet::mentes(jatekos& jatekosunk, int mentes_szama)
+jatekmenet& jatekmenet::setKilep(bool kilepo)
 {
-    string file_nev;
-    file_nev = "Jatek_Mentes " + mentes_szama;
-    int cpszama;
-    cpszama = getCP();
-    int hpszama;
-    hpszama = jatekosunk.getElet();
-    ofstream f(file_nev);
-    if (f.is_open())
+    kilep = kilepo;
+    return *this;
+}
+
+//mentes
+void jatekmenet::mentes(jatekmenet& j)
+{
+    system("cls");
+    bool kilep =false;
+    cout << "Biztosan ki szeretnel lepni? [ Y / N ]\n";
+    char biztos_k;
+    cin >> biztos_k;
+    if (biztos_k == 'Y' or biztos_k == 'y') {
+
+        string file_nev;
+        cout << "\nMi legyen a mentesed neve?\n";
+        cin >> file_nev;
+        int cpszama;
+        cpszama = getCP();
+        int hpszama;
+        hpszama = j.jancsi->getElet();
+        ofstream f(file_nev);
+        if (f.is_open())
+        {
+            f << cpszama << endl;
+            f << hpszama << endl;
+            f.close();
+            setKilep(true);
+        }
+        else
+        {
+            cerr << "\nMENTESI HIBA!\n";
+        }
+    }
+    else if(biztos_k == 'n' or biztos_k == 'N')
     {
-        f << cpszama << endl;
-        f << hpszama << endl;
-        f.close();
+        cout << "Nem leptel ki\n";
     }
     else
     {
-        cerr << "\nMENTESI HIBA!\n";
+        cout << "Hibas valasz\n";
     }
 
 }
 
 //mentett cp beolvasasa
-void jatekmenet::mentes_be(jatekos& jatekosunk, int mentes_szama)
+void jatekmenet::mentes_be(string mentes_neve)
 {
     string file_nev;
-    file_nev = "Jatek_Mentes " + mentes_szama;
+    cin >> file_nev;
     ifstream f(file_nev);
     if (f.is_open())
     {
@@ -96,7 +113,8 @@ void jatekmenet::mentes_be(jatekos& jatekosunk, int mentes_szama)
             getline(f, data[i]);
         }
         setCP(stoi(data[0]));
-        jatekosunk.setElet(stoi(data[1]));
+        jancsi->setElet(stoi(data[1]));
+        f.close();
     }
     else
     {
@@ -139,14 +157,18 @@ jatekmenet& jatekmenet::beolvas(jatekmenet& j, string palyanev)
         //matrix feltoltese
         int sor = 0;
         while (getline(f, egysor)) {
-            for (int i = 0; i < karakterek; i++) {   
+            for (int i = 0; i < karakterek; i++) {
                 j.palya[sor][i] = egysor[i];
             }
             sor++;
         }
 
-    }
     f.close();
+    }
+    else
+    {
+        cerr << "\nNem sikerult a beolvasas\n";
+    }
     //cout << endl << karakterek << endl << sorok << endl;
 
     /*for (int k = 0; k < sorok; k++) {
@@ -185,7 +207,7 @@ bool jatekmenet::lepes(jatekmenet& j)
         {
             if (palya[jancsi_Y - 1][jancsi_X] == ' ')
             {
-            jancsi->MozgasFel();
+                jancsi->MozgasFel();
             }
             return true;
         }
@@ -193,7 +215,7 @@ bool jatekmenet::lepes(jatekmenet& j)
         {
             if (palya[jancsi_Y + 1][jancsi_X] == ' ')
             {
-            jancsi->MozgasLe();
+                jancsi->MozgasLe();
             }
             return true;
         }
@@ -201,7 +223,7 @@ bool jatekmenet::lepes(jatekmenet& j)
         {
             if (palya[jancsi_Y][jancsi_X - 1] == ' ')
             {
-            jancsi->MozgasBalra();
+                jancsi->MozgasBalra();
             }
             return true;
         }
@@ -209,13 +231,13 @@ bool jatekmenet::lepes(jatekmenet& j)
         {
             if (palya[jancsi_Y][jancsi_X + 1] == ' ')
             {
-            jancsi->MozgasJobbra();
+                jancsi->MozgasJobbra();
             }
             return true;
         }
         if (hit == 27 or hit == 'q')
         {
-            kilep = true;
+            mentes(j);
             return true;
         }
         if (hit == 'r')
@@ -235,11 +257,11 @@ bool jatekmenet::lepes(jatekmenet& j)
 }
 
 //palya kirajzolasa
-void jatekmenet::kiir(jatekmenet& j)
+void jatekmenet::kiir(jatekmenet& j, char boss_jele)
 {
     bool leptunk_e;
     bool elso_kiiras = true;
-    
+
     COORD ccoord;
     ccoord.X = 0;
     ccoord.Y = 0;
@@ -278,7 +300,7 @@ void jatekmenet::kiir(jatekmenet& j)
                     else if (boss) {
                         if (ellllenseg_X == j and ellllenseg_Y == i)
                         {
-                            cout << "S";
+                            cout << boss_jele;
                         }
                     }
                     else
