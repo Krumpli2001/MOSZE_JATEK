@@ -54,17 +54,19 @@ public:
 class gyujteni
 {
 private:
-    int x, y;
+    int x, y, mennyit_ad;
 public:
     gyujteni() { x = -1; y = -1; }
-    gyujteni(int koordX, int koordY)
+    gyujteni(int koordX, int koordY, int ad)
     {
         x = koordX;
         y = koordY;
+        mennyit_ad = ad;
     }
 
     int getX() { return x; }
     int getY() { return y; }
+    int get() { return mennyit_ad; }
     gyujteni& setX( int x );
     gyujteni& setY( int y );
 };
@@ -83,7 +85,7 @@ private:
 
 public:
     jatekmenet() { kilep = false; cp = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
-    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, char** palya, bool van_e_gyujteni, int collX, int collY)
+    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, char** palya, bool van_e_gyujteni, int collX, int collY, int mennyitad)
     {
         //Jancsi letrehozasa
         jancsi = new jatekos(jancsiX, jancsiY, jancsihp);
@@ -101,7 +103,7 @@ public:
         //gyujtogethetok letrehozasa
         if (van_e_gyujteni)
         {
-            coll = new gyujteni(collX, collY);
+            coll = new gyujteni(collX, collY, mennyitad);
         }
         else
         {
