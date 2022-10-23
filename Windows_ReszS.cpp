@@ -34,18 +34,6 @@ void jatekos::MozgasJobbra()
     x++;
 }
 
-gyujteni& gyujteni::setX(int koordX)
-{
-    x = koordX;
-    return *this;
-}
-
-gyujteni& gyujteni::setY(int koordX)
-{
-    y = koordX;
-    return *this;
-}
-
 jatekmenet& jatekmenet::setCP(int cpszam)
 {
     cp = cpszam;
@@ -62,25 +50,36 @@ jatekmenet& jatekmenet::setKilep(bool kilepo)
 void jatekmenet::mentes(jatekmenet& j)
 {
     system("cls");
-    bool kilep =false;
+    bool kilep = false;
+    bool mentes = false;
     cout << "Biztosan ki szeretnel lepni? [ Y / N ]\n";
     char biztos_k;
     cin >> biztos_k;
     if (biztos_k == 'Y' or biztos_k == 'y') {
+        cout << "Szeretnel menteni? [ Y / N ]\n";
+        char biztos_m;
+        cin >> biztos_m;
+        if (biztos_m == 'Y' or biztos_m == 'y') {
 
-        string file_nev;
-        cout << "\nMi legyen a mentesed neve?\n";
-        cin >> file_nev;
-        int cpszama;
-        cpszama = getCP();
-        int hpszama;
-        hpszama = j.jancsi->getElet();
-        ofstream f(file_nev);
-        if (f.is_open())
+            string file_nev;
+            cout << "\nMi legyen a mentesed neve?\n";
+            cin >> file_nev;
+            int cpszama;
+            cpszama = getCP();
+            int hpszama;
+            hpszama = j.jancsi->getElet();
+            ofstream f(file_nev);
+            if (f.is_open())
+            {
+                f << cpszama << endl;
+                f << hpszama << endl;
+                f.close();
+                setKilep(true);
+            }
+        }
+        else if (biztos_m == 'N' or biztos_m == 'n')
         {
-            f << cpszama << endl;
-            f << hpszama << endl;
-            f.close();
+            cout << "Nem mentettel\n";
             setKilep(true);
         }
         else
@@ -313,13 +312,3 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
         }
     }
 }
-
-//void jatekmenet::fut(jatekmenet& j)
-//{
-//    bool leptunk = true;
-//    while (!kilep, leptunk)
-//    {
-//        kiir(j, leptunk);
-//        leptunk = lepes(j);
-//    }
-//}

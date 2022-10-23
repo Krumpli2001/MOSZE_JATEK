@@ -9,7 +9,24 @@
 
 using namespace std;
 
-class jatekos
+//class entity
+//{
+//private:
+//public:
+//    int x, y;
+//    entity() { x = 0; x = 0; }
+//    entity(int koordX, int koordY)
+//    {
+//        x = koordX;
+//        y = koordY;
+//    }
+//
+//    virtual int getX() { return x; }
+//    virtual int getY() { return y; }
+//
+//};
+
+class jatekos //: public entity
 {
 private:
 	int x, y;
@@ -39,12 +56,13 @@ public:
 class elenseg
 {
 private:
-    int x, y;
+    int x, y, sebzes;
 public:
-    elenseg(int koordX, int koordY)
+    elenseg(int koordX, int koordY, int seb)
     {
         x = koordX;
         y = koordY;
+        sebzes = seb;
     }
 
     int getX() { return x; }
@@ -56,7 +74,7 @@ class gyujteni
 private:
     int x, y, mennyit_ad;
 public:
-    gyujteni() { x = -1; y = -1; }
+    gyujteni() { x = -1; y = -1; mennyit_ad = 0; }
     gyujteni(int koordX, int koordY, int ad)
     {
         x = koordX;
@@ -66,9 +84,7 @@ public:
 
     int getX() { return x; }
     int getY() { return y; }
-    int get() { return mennyit_ad; }
-    gyujteni& setX( int x );
-    gyujteni& setY( int y );
+    int getMennyit_Ad() { return mennyit_ad; }
 };
 
 class jatekmenet
@@ -85,7 +101,7 @@ private:
 
 public:
     jatekmenet() { kilep = false; cp = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
-    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, char** palya, bool van_e_gyujteni, int collX, int collY, int mennyitad)
+    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, bool van_e_gyujteni, int collX, int collY, int mennyitad)
     {
         //Jancsi letrehozasa
         jancsi = new jatekos(jancsiX, jancsiY, jancsihp);
@@ -93,7 +109,7 @@ public:
         //boss letrehozasa
         if (van_e_boss)
         {
-            boss = new elenseg(bossX, bossY);
+            boss = new elenseg(bossX, bossY, seb);
         }
         else
         {
@@ -140,7 +156,5 @@ public:
     bool lepes(jatekmenet& j);
 
     void kiir(jatekmenet& j, char boss_jele);
-
-    //void fut(jatekmenet& j);
 
 };
