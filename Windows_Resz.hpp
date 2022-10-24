@@ -9,27 +9,30 @@
 
 using namespace std;
 
-//class entity
-//{
-//private:
-//public:
-//    int x, y;
-//    entity() { x = 0; x = 0; }
-//    entity(int koordX, int koordY)
-//    {
-//        x = koordX;
-//        y = koordY;
-//    }
-//
-//    virtual int getX() { return x; }
-//    virtual int getY() { return y; }
-//
-//};
+class entity
+{
+protected:
+    int x, y;
+public:
+    entity() { x = 0; x = 0; }
+    entity(int koordX, int koordY)
+    {
+        x = koordX;
+        y = koordY;
+    }
+    //virtual ~entity() {};
 
-class jatekos //: public entity
+    //virtual void func() =0;
+
+    int getX() { return x; }
+    int getY() { return y; }
+
+};
+
+class jatekos : public entity
 {
 private:
-	int x, y;
+	//int x, y;
 	int eredeti_x, eredeti_y;
     int elet;
 public:
@@ -41,10 +44,11 @@ public:
         y = koordY;
         elet = hp;
     }
+    ~jatekos() {};
 
     void Reset();
-    int getX() { return x; }
-    int getY() { return y; }
+    //int getX() { return x; }
+    //int getY() { return y; }
     int getElet() { return elet; }
     jatekos& setElet(int hp);
     void MozgasFel();
@@ -64,6 +68,7 @@ public:
         y = koordY;
         sebzes = seb;
     }
+    ~elenseg() {};
 
     int getX() { return x; }
     int getY() { return y; }
@@ -81,6 +86,7 @@ public:
         y = koordY;
         mennyit_ad = ad;
     }
+    ~gyujteni() {};
 
     int getX() { return x; }
     int getY() { return y; }
