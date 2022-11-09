@@ -138,7 +138,7 @@
     <ClInclude Include="gyujteni.hpp" />
     <ClInclude Include="jatekmenet.hpp" />
     <ClInclude Include="jatekos.hpp" />
-    <ClInclude Include="linux.hpp" />
+    <ClInclude Include="linuxra.hpp" />
     <ClInclude Include="futas.hpp" />
     <ClInclude Include="Windowsra.hpp" />
   </ItemGroup>

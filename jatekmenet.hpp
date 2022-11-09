@@ -13,7 +13,7 @@
 #include "Windowsra.hpp"
 #else 
 #define CLEAR "clear"
-#include "linux.hpp"
+#include "linuxra.hpp"
 #endif
 
 class jatekmenet

@@ -45,3 +45,12 @@ char getche(void)
 {
     return getch_(1);
 }
+
+#include <sys/ioctl.h>
+#include <unistd.h>
+
+
+inline void KursorReset()
+{
+    /* tc_move_cursor(X, Y)  */printf("\033[%d;%dH", 0, 0);
+}
