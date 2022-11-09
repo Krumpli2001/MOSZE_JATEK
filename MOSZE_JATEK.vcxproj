@@ -130,7 +130,7 @@
     <ClCompile Include="Jatekmenet.cpp" />
     <ClCompile Include="Jatekos.cpp" />
     <ClCompile Include="MOSZE_JATEK.cpp" />
-    <ClCompile Include="Windows_ReszS.cpp" />
+    <ClCompile Include="Futas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ellenseg.hpp" />
@@ -138,7 +138,8 @@
     <ClInclude Include="gyujteni.hpp" />
     <ClInclude Include="jatekmenet.hpp" />
     <ClInclude Include="jatekos.hpp" />
-    <ClInclude Include="Windows_Resz.hpp" />
+    <ClInclude Include="linux_getch.hpp" />
+    <ClInclude Include="futas.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />

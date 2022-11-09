@@ -1,4 +1,4 @@
-#include "Windows_Resz.hpp"
+#include "futas.hpp"
 
 //jatekmenet konstruktora
 	//(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya,

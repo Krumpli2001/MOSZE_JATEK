@@ -15,7 +15,7 @@ jatekmenet& jatekmenet::setKilep(bool kilepo)
 //mentes
 void jatekmenet::mentes(jatekmenet& j)
 {
-    system("cls");
+    system(CLEAR);
     bool kilep = false;
     bool mentes = false;
     std::cout << "Biztosan ki szeretnel lepni? [ Y / N ]\n";
@@ -146,8 +146,7 @@ bool jatekmenet::lepes(jatekmenet& j)
     int elozo_jancsi_X = jancsi_X;
     int elozo_jancsi_Y = jancsi_Y;
 
-    if (_kbhit())
-    {
+
         char hit = _getch();
         if (hit == 'w')
         {
@@ -197,8 +196,6 @@ bool jatekmenet::lepes(jatekmenet& j)
             std::cout << "\nHibas bemenet\n";
             return true;
         }
-
-    }
     return false;
 }
 
@@ -214,12 +211,15 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
     while (!kilep) {
         leptunk_e = false;
 
-        leptunk_e = lepes(j);
+        if (!elso_kiiras)
+        {
+            leptunk_e = lepes(j);
+        }
 
         if (leptunk_e or elso_kiiras)
         {
             elso_kiiras = false;
-            //system("cls");
+            //system("CLEAR");
             SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), ccoord);
 
             for (int i = 0; i < j.magassag; i++)
@@ -254,7 +254,7 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
                 }
                 std::cout << std::endl;
             }
-            std::cout << "\nIRANYITAS: WASD, PALYA UJRAKEZDESE: R, KILEPES: Q\n";
+            std::cout << "\nIRANYITAS: WASD, PALYA UJRAKEZDESE: R, KILEPES: Q/ESC\n";
             std::cout << "Eleteid: " << jancsi->getElet();
         }
     }

@@ -3,12 +3,19 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <conio.h>
-#include <Windows.h>
 
 #include "jatekos.hpp"
 #include "ellenseg.hpp"
 #include "gyujteni.hpp"
+
+#ifdef _WIN32
+#define CLEAR "cls"
+#include <conio.h>
+#include <Windows.h>
+#else 
+#define CLEAR "clear"
+#include "linux_getch.hpp"
+#endif
 
 class jatekmenet
 {

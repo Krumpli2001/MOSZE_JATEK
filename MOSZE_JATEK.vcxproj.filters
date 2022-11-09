@@ -18,7 +18,7 @@
     <ClCompile Include="MOSZE_JATEK.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Windows_ReszS.cpp">
+    <ClCompile Include="Futas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Jatekos.cpp">
@@ -29,7 +29,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Windows_Resz.hpp">
+    <ClInclude Include="futas.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="entity.hpp">
@@ -45,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gyujteni.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="linux_getch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
