@@ -47,7 +47,10 @@
     <ClInclude Include="gyujteni.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="linux_getch.hpp">
+    <ClInclude Include="linux.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Windowsra.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

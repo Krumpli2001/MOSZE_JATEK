@@ -205,9 +205,6 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
     bool leptunk_e;
     bool elso_kiiras = true;
 
-    COORD ccoord;
-    ccoord.X = 0;
-    ccoord.Y = 0;
     while (!kilep) {
         leptunk_e = false;
 
@@ -220,7 +217,7 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
         {
             elso_kiiras = false;
             //system("CLEAR");
-            SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), ccoord);
+            KursorReset();
 
             for (int i = 0; i < j.magassag; i++)
             {

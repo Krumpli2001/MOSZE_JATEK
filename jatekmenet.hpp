@@ -10,11 +10,10 @@
 
 #ifdef _WIN32
 #define CLEAR "cls"
-#include <conio.h>
-#include <Windows.h>
+#include "Windowsra.hpp"
 #else 
 #define CLEAR "clear"
-#include "linux_getch.hpp"
+#include "linux.hpp"
 #endif
 
 class jatekmenet

@@ -138,8 +138,9 @@
     <ClInclude Include="gyujteni.hpp" />
     <ClInclude Include="jatekmenet.hpp" />
     <ClInclude Include="jatekos.hpp" />
-    <ClInclude Include="linux_getch.hpp" />
+    <ClInclude Include="linux.hpp" />
     <ClInclude Include="futas.hpp" />
+    <ClInclude Include="Windowsra.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Text.txt" />
