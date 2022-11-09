@@ -6,7 +6,7 @@
 static struct termios eredeti, jelenlegi;
 
 // uj terminal beallitasok
-void initTermios(int echo)
+inline void initTermios(int echo)
 {
     tcgetattr(0, &eredeti); // eredeti terminal beallitasok
     jelenlegi = eredeti;
@@ -21,12 +21,12 @@ void initTermios(int echo)
 }
 
 // eredeti visszaallitasa
-void resetTermios(void)
+inline void resetTermios(void)
 {
     tcsetattr(0, TCSANOW, &eredeti);
 }
 
-char getch_(int echo)
+inline char getch_(int echo)
 {
     char ch;
     initTermios(echo);
@@ -35,13 +35,13 @@ char getch_(int echo)
     return ch;
 }
 // echo nelkul
-char _getch(void)
+inline char _getch(void)
 {
     return getch_(0);
 }
 
 // echoval
-char getche(void)
+inline char getche(void)
 {
     return getch_(1);
 }
