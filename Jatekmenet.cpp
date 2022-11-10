@@ -18,14 +18,16 @@ void jatekmenet::mentes(jatekmenet& j)
     system(CLEAR);
     bool kilep = false;
     bool mentes = false;
-    std::cout << "Biztosan ki szeretnel lepni? [ Y / N ]\n";
+    std::cout << "Biztosan ki szeretnel lepni? [ I / N ]\n";
     char biztos_k;
     std::cin >> biztos_k;
-    if (biztos_k == 'Y' or biztos_k == 'y') {
-        std::cout << "Szeretnel menteni? [ Y / N ]\n";
+    biztos_k = tolower(biztos_k);
+    if (biztos_k == 'i' or biztos_k == 'y') {
+        std::cout << "Szeretnel menteni? [ I / N ]\n";
         char biztos_m;
         std::cin >> biztos_m;
-        if (biztos_m == 'Y' or biztos_m == 'y') {
+        biztos_m = tolower(biztos_m);
+        if (biztos_m == 'i' or biztos_m == 'y') {
 
             std::string file_nev;
             std::cout << "\nMi legyen a mentesed neve?\n";

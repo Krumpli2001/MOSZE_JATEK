@@ -2,4 +2,7 @@
 
 #include "jatekmenet.hpp"
 
-void run();
+int kezdes();
+//void run(jatekmenet);
+
+void run(int fut);
