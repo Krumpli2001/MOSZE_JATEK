@@ -69,6 +69,11 @@ public:
         delete jancsi;
         if (boss) { delete boss; }
         if (coll) { delete coll; }
+        for (int i = 0; i < magassag; i++)
+        {
+            delete[] palya[i];
+        }
+        delete[] palya;
     }
 
     int getCP() { return cp; }
