@@ -1,0 +1,336 @@
+Narrator: Tortenetunk aurum kiralysagaban jatszodik. aurum foldjen el egy gonosz sarkany, Saccularius. a szornyeteg azt koveteli az uralkodo csaladtol, hogy tiz evente kivalaszthat maganak egy embert akit felfal, aldozat kent, vagy kulonben romba donti az egesz kiralysagot. ez mar tobb szaz eve igy van, azonban most, az oreg kiraly lanyara esett a sarkany valasztasa.
+
+Kiralysag szelen levo faluban:
+
+a polgarmester bejelenti a hirt a falusiaknak:
+Polgi (sry, csak igy jutott eszembe elinditan): Felolvasom, Thesaurus kiraly levelet: aurum kiralysag lakoi, kijelentem, hogy Saccularius, a sarkany elrabolta egyetlen lanyomat Filia-t. aki visszahozza nekem a lanyomat annak ezer aranypenzt igerek, es amig kiralysagomban el, egyetlen gondja nem lehet.
+
+N: ezt hallva egy lelkes ifju, Jancsi (majd el lehet nevezni jatek soran, remelhetoleg)
+elhatarozta, hogy szerencset probal. elso gondolata az volt, hogy felszerelest kell szereznie ahhoz, hogy szembenezhessen a sarkannyal. De nem akarmilyen felszerelesre, hiszen 500 eve a kiralysag megprobalta legyozni a szornyeteget, de az egesz hadsereg odalett. Jancsi-nek a fold legjobb panceljara es kardjara volt szuksege, gyogyfozetekre es varazslatra, hogy eselye legyen a sarkany ellen.
+
+Jancsi: Meg ma a vilag legjobb kovacsa fele veszem az iranyt, aki majd pancelt es kardot keszit nekem.
+
+[elindul, gameplay, itt lehet talalni penzt a kovacsnak*]
+
+N: Mit viszel magaddal? (2 valasztas)
+-etel es ital
+-meleg ruha
+-kes es csuzli
+-kotel
+
+Jancsi: teljesitettem estere utam felet azonban, az ejszaka hideg, es egy kicsit ehes is vagyok, mit kene tennem
+ehseg:
+-ha az etel/italt valasztotta megeheti azt
+-ha a kes, csuzlit akkor el mehet vadaszni
+-ha a kotelet, akkor egy fa mellett allithat csapdat
+
+Hideg:
+-ha van meleg ruda akkor pipa
+-ha nincs elmegy egy barlangba aludni ((itt lehet a kincs))
+
+N: Mikor a nap felkelt Jancsi mar utnak is indult, hogy mihamarabb odaerjen a kovacshoz. (Del utan oda is ert)
+
+Jancsi: Jo napot kovacs ur, ugy hallottam, on a legjobb ezen a videken
+Kovacs: az biza’! Mit tehetek erted te ifju?
+Jancsi: azt szeretnem, hogy elkeszitsd nekem egy olyan eros pancelt, ami meg a sarkany harapasat is kibirja es egy olyan eros kardot ami meg a sarkany boret is elvagja.
+
+Kovacs: ugye nem le akarod gyozni a sarkanyt?
+
+Jancsi: De igen uram!
+
+Kovacs: ebben az esetben a pancelt elkeszitem neked, azonban ahhoz, hogy a kard olyan eros legyen, hogy eselyed legyen azt magadnak kell elkeszitened. Termeszetesen ebbe segiteni fogok.
+
+Jancsi: Koszonom kovacs ur! Mivel halalhatnam meg?
+
+Kovacs: Gyozz! az az atkozott sarkany 20 eve az en egyetlen fiamat vitte el. ugyhogy semmi mast nem kerek toled csak, gyozd le a szornyeteget.
+
+N: a kovacs neki is all a pancel elkeszitesehez. Segitesz neki?
+lehet neki segiteni, vagy nem, nincs jelentosege, csak h szarul erezd magad :(
+
+N: a kovacs egesz ejszaka a pancelon dolgozott, ez a pancel a mestermuve. Masnap elkezditek a kard kesziteset.
+
+Kovacs: eloszor is fiam, valaszd ki melyik kozetbol szeretned elkesziteni a kardodat:
+-Fekete
+-Kek
+-Lila
+-Zold
+-lehet tobb is, idaig jutottam
+
+Kovacs: Jo dontes fiam, oreg legendak szerint a (insert valasztott szin) kozetbol lehet a legerosebb kardokat elkesziteni.
+
+N: Jancsi a kovacs utasitasait kovetve egesz nap edzette keszulo kardjat a vulkan melegevel versenyzo kemenceben, es a jegnel is hidegebb varazsvizben. Masnapra, teljesen lehult a kard, mar nem kellett kesztyu ahhoz, hogy Jancsi megfogja a markolatanal.
+
+Kovacs: Te fiam, ahhoz hogy egy ilyen kardot forgass, megfelelo tudasra is szukseged van. Menj el oreg baratomhoz, a kiralyi sereg volt kapitanyahoz, eques-hez. Mond neki, hogy Faber kuldott. es vidd ezt is, legyen a csata kozben is nalad.
+
+N: a kovacs adott egy csillogo mintazott fa ermet.
+
+Jancsi:  Koszonom Faber ur! Sikerrel fogok jarni!
+
+N: Jancsi utnak is indul. 
+
+gameplay - varosig
+N: a pancel olyan konnyu volt, hogy Jancsi ugy erezte, konnyebb futni mint gyalogolni. egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.
+-bekopogsz
+-benyitsz
+-bedontod az ajtot (ha bedontod az ajtot azt fogja kerni fizetsegkent h javitsd meg)
+
+Lovag: Hat te meg mit akarsz itt te gyerek!?
+
+Jancsi: Faber kovacs mester kuldott, azt mondta te megtanitasz a kardforgatasra.
+
+N: megmutatod neki az ermet
+-Yay
+-Nay
+
+(((((((Ha iGeN
+Lovag: Barmire is keszulsz igazan megbizhat benned, ha az oreg torpe a tuzallosag ermet is neked adta. egye fene megtanitalak.
+))))))
+
+Meg biza, de nem ingyen,
+-ha betorted az ajtot:
+Javitsd meg az ajtomat te mamlasz, miert kellett betorni, van kilincse is.
+-ha normal modon jottel be csak kerdez: 
+Mire kell neked a kardforgatas muveszete ((barmit meg lehet adni, nem jut eszembe semmi))
+
+N: 3 nap  kemeny edzes utan eljott a teszt ideje
+
+Lovag: Ha a sarkany a karmaival tamad, mit csinalsz?
+-elugrasz elole            -    helyes
+-vedekezel a kardoddal    -    nem, nem birod el a sarkanyt, ahhoz tul nagy
+-elszaladsz            -    nem, tud repulni, utol fog erni
+-alsz egy helybe        -     dead
+
+Lovag: Ha tuzet okad, azt hogy veded ki
+-hasznalod az ermet         -    ez csak akkor lehet ha megmutadtad a lovagnak
+-elbujsz egy szikla moge    -    jo ez is
+-megprobalsz elszaladni elole    dead
+
+Lovag: Teljesitetted a kikepzesemet! De ez nem lesz eleg a sarkany legyozesehez. azt latom, hogy a kardod es a pancelod a legjobb-e videken, de elmehetsz a kiralyi varazslohoz aki megbuvolheti a kardodat. igy meg a sarkany harapasa sem fogja tudni eltorni. Mellesleg, ha meg addig el akarsz erni a szorny barlangjahoz amig elek, szukseged lesz egy paripara. a fovaros szelen el egy lovasz. az emberek azt mondjak kulonlegesek a lovai, de ezt en is csak ugy hallottam. Sok szerencset ifju lovag!
+
+Jancsi: Koszonom Kapitany ur! Minden tolem telhetot megteszek!
+
+N: Jancsi delre mar is a kiraly palota kapuinal volt. a kapuor elvezette a varazslohoz aki el is kezdte elokesziteni a hozzavalokat a ritualehoz.
+
+Jancsi: Koszonom, hogy ilyen gyorsan fogadott Varazslo.
+Varazslo: ugyan semmiseg. ez a dolgom. Most ugy is a fel kiralysag ezen a kuldetesen nyuzsog.
+
+Jancsi: es mondja, nem tud valamit egy lo arusrol a varos szelen. eques azt mondta van valami erdekes a lovaival kapcsolatba.
+
+Varazslo: Persze, hogy tudom kirol beszelsz, a testverem az. a lovaival kapcsolatban meg mondjuk azt, hogy segitek neki idorol-idore. Tudod mit? Mondok egy titkot. Menj oda, pontosan naplemente utan, es kerd tole a legokosabb lovat.
+
+Jancsi: Rendben, ugy lesz, koszonom a tanacsot!
+
+N: Naplementeig Jancsi probalta tesztelgetni a kardjat a varosban. Lovagi kikepzeset szinte elfelejtve minden kemany kohoz, vashoz odavagta elevel kardjat, de az olyan volt mintha most hozta volna el a varazslotol. egy karcolas sem lett a pengen. Sot olyan volt mintha elesebb lenne.
+Mikor a nap elerte a horizontot Jancsi elindult a lovaszhoz, de mar olyan gyors volt a panceltol es a kikepzestol, hogy az egesz varoson atszaladt. Mire odaert eppen csak nem lehetett latni a napot.
+
+gameplay - ki a varosbol
+
+Jancsi: Jo estet lovasz! a legokosabb lovadat szeretnem megvenni.
+
+N: Nyerites hallatszik a pajta hatuljabol.
+
+Lovasz: ugy tunik valaki hallotta a jo hirt, mennyunk hatra.
+
+N: elmentek a pajta hatuljaba, mikor egy hofeher lo megpillantja Jancsi-t.
+
+Beszelo lo: Na vegre valaki eljott ertem :)
+
+Jancsi: aaaa beszel a lovad!
+
+Lovasz: igen tudom, ha’ a legokosabbat kerted. Na paripam, mutatkozz be leendo gazdadnak.
+
+Beszelo lo: Mori vagyok, orvendek a talalkozasnak.
+
+Jancsi: uhh… Hello? Valahogy nem erre szamitottam miutan ide kuldott a varazslo.
+
+Lovasz: akkor megis mire. Plane ugy, hogy a batyam kuldott.
+
+Jancsi: es mibe is kerul egy beszelo lo?
+
+Lovasz: Tudtommal le akarod gyozni a sarkanyt. akkooooor mondjuk legyen a jutalmadbol 50 aranypenz.
+
+Jancsi: Megegyezunk, akkor mar is a szornyeteg barlangja fele veszem az iranyt. Gyere Mori.
+
+N: Jancsi es Mori, a legokosabb lo, el is indultak Saccularius barlangja fele, de nem lesz konnyu az utjuk, hiszen a barlang a a kiralysag vegtelen erdejenek a kozepen van. az a monda jarja a foldeket, ha valaki bemereszkedik oda, ritkan hagyja el elve.
+
+gameplay - erdobe
+
+Mori: ott vagyunk mar, kezdenek fajni a labaim.
+
+Jancsi: Szerintem eltevedtunk…
+
+N: Mori hirtelen megall es felnyerit.
+
+Mori: He mi ez az ize!?
+
+N: egy max 30 centis kis emberke, nagy szakallal, piros sapkaval, es kek ruhaban all Mori elott.
+
+Torpe: Majdnem eltapostal! Nezz a labad ele!
+
+Jancsi: elnezest, de sajnos fogalmunk nincs merre jarunk. Nem tudsz segiteni?
+
+Torpe: Csak azt tudom megmondani hol lakik az az oregasszony, az ugy ismeri ezt az erdot mint a tenyeret. De csak akkor mondom el ha megfejted a rejtvenyemet.
+
+Rejtveny - nem jut eszembe semmi
+
+Torpe: Jo, jo nem vagy teljesen remenytelen. Na szoval, az oreghez innen menj egyenesen, az elso kanyarnal jobbra, majd ott is mesz egy darabig egyenesen, ott a masodik kanyarnal balra, de vigyazz ha letersz az utrol ott csapdak vannak. es meg egy dolog semmi keppen ne aludj a banyanal. Na papa!
+
+Mori: ez mit akar jelenteni?
+
+Jancsi: Fogalmam sincs… De induljunk, ugy hangzik nincs olyan messze es mindjart sotetedik.
+
+Mori: ott vagyunk mar?
+
+Jancsi: Szerintem igen, nezd ott mar latom a hazat.
+
+Neni: Jajjjjjj ifju legeny! Hat on mit keres itt?
+
+Jancsi: Valaki, vagy valami… utba igazitott. azt mondta on tudja merre van a sarkany Saccularius barlanga.
+
+Neni: Tudom en, de gyorsan tudna nekem segiteni? elrohant alfie.
+
+Jancsi: az ki?
+
+Neni: Jajjjjjj alfie a legaranyosabb cica ebben az erdoben. Jajjjjjj elszaladt!
+
+Jancsi: Rendben, rendben megkeresem. Mindjart jovok is vissza.
+
+gameplay - cica kereses
+
+Jancsi: Neni megtalaltam a cicajat.
+
+Neni: Jajjjjjj hogy halalhatnam meg? Jajjjjjj tudom mar! Mi lenne ha itt toltened ezt a csunya, hideg ejszakat?
+
+Jancsi: arra semmi szukseg, csak azt szeretnem tudni, hogy merre van a sarkany barlangja.
+
+Neni: Jajjjjjj, de miert akarod te azt tudni, az oda vezeto ut veszelyes, a sarkany meg meg veszelyesebb. itt meg meleg van, es van sutim. :)
+
+N: Maradsz ejszakara [ i / N ]
+Ha igen akkor ded
+N: Meg kellett volna fogadni a mano tanacsat, miutan lehunytad a szemed, tobbet mar soha nem nyitottad ki ujra
+
+Ha nem:
+
+Jancsi: Nem, nem, nagyon szepen koszonom.
+
+Neni: Ha nem hat nem. Legyen, a barlang az erdo kozepeben talalhato hatalmas hegyen van, innen is latni.
+
+Jancsi: Rendben, akkor utnak is kelek.
+
+Neni: sok szerencset!
+
+gameplay
+
+N: a hosszu ejszaka utan ugy dontesz, hogy kell valami fele reggelit szerezni.
+elmesz:     -vadaszni
+        -horgaszni
+        -gyujtogetni
+
+
+Ha VaDaSZNi:
+N: az erdo surujeben megpillantasz valami fele vadat. utana futsz? [ i / N ]
+Ha nem akkor valasztasz masikat.
+Ha igen:
+N: a felszereleseddel konnyeden elejtetted a vadat, igy meg is van mi lesz a reggeli.
+
+Ha HoRGaSZNi:
+N: elmesz egy kozelben csorgedezo patak melle es ugy dontesz, hogy nekiallsz horgaszni. Lassan mar egy oraja itt ucsorogsz de meg nem volt fogas. Folytatod a horgaszast? [ i / N ]
+Ha nem akkor valasztasz masikat.
+Ha igen:
+N: Nagyjabol ket perc mulva, meg is hozta turelmed a gyumolcset, igy meg is van mi lesz a reggeli.
+
+Ha GYuJToGeTNi:
+N: rengeteg szines bogyot latsz noni az erdoben de egyiket sem ismered. Biztos meg akarod oket kostolni? [ i / N ]
+Ha nem akkor valasztasz masikat.
+Ha igen:
+N: ugy dontesz hogy egy kicsit megperkelet a talalt gyumolcsoket, hatha attol jobb izuk lesz.
+
+N: Neki is allsz tuzet rakni,  hogy elkeszitsd a varva vart reggelidet, de a finom illatra, megjelenik egy medve az erdobol.
+
+gameplay - medve boss fight XD
+N: a medve rad tamad, mit csinalsz?
+-adsz neki a reggelibol            -    alive
+-elugrasz elole, es beledofod a kardodat    -    alive
+-felmaszol a fara ami alatt sutogettel        -     dead
+
+Mori: Tyuu ez kemeny menet volt, nem hittem volna, hogy valaha majd latni fogok ilyen kozelrol egy igazi medvet.
+
+Jancsi: Nekem mondod? es ez meg csak egy medve volt. Milyen lesz a sarkany?
+
+Mori: igazad van, amig eg a tuz nem artana par gyogyitalt fozni. Szerencsere ez az erdo tele van hozzavalokkal.
+
+N: a gyogyitalhoz 2 alapanyag kell: Furcsa kis piros gombacska, es aranymagos dinnye
+((MC hehe)), es persze viz, amiben ezeket ossze fozod.
+
+gameplay - alapanyag kereses
+
+Mori: Most, hogy megvannak az alapanyagok, ugy emlekszem eloszor a gombat kell belerakni a forro vizbe es utana a dinnyet.
+
+N: Mit raksz bele eloszor?
+-gomba
+-dinnye
+
+Ha gomba: megy tovabb
+Ha dinnye: Jancsi: lehet Morinak igaza volt, valami itt nem stimmel, eloszor gomba, utana dinnye.
+
+(-1 alap anyag mindegyikbol)
+
+Ha gomba: +X poti, amennyi alapanyag volt, max 3 kb
+
+Jancsi: elkeszultek a gyogyitalok, mehetunk is tovabb!
+
+Mori: Gyere pattanj fel.
+
+gameplay - a folyoig / barlangig
+
+Mori: Na es most, hogyan tovabb
+
+Jancsi: Nezd, ott latok egy csonakot nezzuk meg.
+
+gameplay - folytatodik, megjelenik a mappon egy csonak
+
+Jancsi: Szuper, nem lyukas es nem tunik ugy mintha elsullyedne
+
+gameplay - folytatodik, elmegy a hegy aljaig
+
+Jancsi: Hat itt vagyunk Mori. Koszonom, hogy idaig elhoztal, de nem hiszem, hogy olyan jol tudsz hegyet maszni.
+
+Mori: Mirol beszelsz? en egy Skyrim-i lo vagyok a szomszedos orszagbol te meg senkit nem lattal ilyen jol maszni. abban viszont igazad van, vegig nem foglak elvinni, csak a barlang bejarataig. ott pedig varok majd, hogy kigyere es jo hireket mondj.
+
+Jancsi: ebben az esetbe irany a bejarat!
+
+N: a barlang bejaratanal leszallsz Morirol, majd bemereszkedsz a sarkany barlangjaba.
+
+gameplay - barlang kb 2 lepesig
+
+Saccularius: Ki MeReSZeL iDe BeJoNNi!!! aZ eN oTTHoNoMBa!!!
+
+N: eszreveszi a sarkany a lovag kozeledtet, toppant egy nagyot, a barlang bejarata ele egy nagy szikla leesik. 
+
+gameplay - sarkany boss fight
+
+N: a sarkany a karmaival tamad, mit csinalsz?
+-elugrasz elole            -    helyes
+-vedekezel a kardoddal    -    nem, nem birod el a sarkanyt, ahhoz tul nagy
+-elszaladsz            -    nem, tud repulni, utol fog erni
+-alsz egy helybe        -     dead
+
+N: a sarkany tuzet okad, hogy veded ki?
+-hasznalod az ermet         -    ez csak akkor lehet ha megmutadtad a lovagnak
+-elbujsz egy szikla moge    -    jo ez is
+-megprobalsz elszaladni elole    dead
+
+N: a sarkany megprobal felfalni, mit csinalsz
+-hagyod hogy lenyeljen hatha jol sul el         - ded
+-megvarod meg eleg kozel er es atszurod a nyakat    -W
+-kiszurod az egyik szemet        -ettol csak mergesebb lett -ded
+-megprobalsz elszaladni elole     -hosszu az a sarkany nyak -ded
+
+Ha W:
+
+Hercegno: o megmentom, nem hittem volna hogy valaki le tudja gyozni a sarkanyt
+
+Jancsi: Gyere hercegno, a beszelo lovam es a kiraly mar var!
+
+
+kigogytam mindenbol, ide a vegere lehet kellene meg valami
