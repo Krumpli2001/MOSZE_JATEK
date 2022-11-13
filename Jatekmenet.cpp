@@ -148,8 +148,16 @@ bool jatekmenet::lepes(jatekmenet& j)
     int elozo_jancsi_X = jancsi_X;
     int elozo_jancsi_Y = jancsi_Y;
 
+    //bool megvolt = false;
+    if ((jancsi->getX() == coll->getX()) and (jancsi->getY() == coll->getY()) and (coll->getMegvolt() == false))
+    {
+        jancsi->setElet(jancsi->getElet() + coll->getMennyit_Ad());
+        coll->setMegvolt(true);
+    }
+
 
         char hit = _getch();
+        hit = tolower(hit);
         if (hit == 'w')
         {
             if (palya[jancsi_Y - 1][jancsi_X] == ' ')
@@ -204,6 +212,7 @@ bool jatekmenet::lepes(jatekmenet& j)
 //palya kirajzolasa
 void jatekmenet::kiir(jatekmenet& j, char boss_jele)
 {
+    system(CLEAR);
     bool leptunk_e;
     bool elso_kiiras = true;
 
@@ -254,7 +263,17 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
                 std::cout << std::endl;
             }
             std::cout << "\nIRANYITAS: WASD, PALYA UJRAKEZDESE: R, KILEPES: Q/ESC\n";
+            int volt_elet = jancsi->getElet();
             std::cout << "Eleteid: " << jancsi->getElet();
+            if (volt_elet < jancsi->getElet())
+            {
+                std::cout << "\nTALALTAL EGY KINCSET, AZ ELETED NAGYOBB LETT " << jancsi->getElet() - volt_elet << "PONTTAL";
+            }
+        }
+        if((jancsi->getX() == 0) or (jancsi->getX() == j.szelsseg) or (jancsi->getY() == 0) or (jancsi->getY() == magassag))
+        {
+            kilep = true;
         }
     }
+    system(CLEAR);
 }

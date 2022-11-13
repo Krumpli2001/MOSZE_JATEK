@@ -3,7 +3,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <stdlib.h>
+#include <chrono>
+#include <thread>
+
+//#include <stdlib.h>
 
 #include "jatekos.hpp"
 #include "ellenseg.hpp"
@@ -31,7 +34,7 @@ private:
 
 public:
     jatekmenet() { kilep = false; cp = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
-    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, bool van_e_gyujteni, int collX, int collY, int mennyitad)
+    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, bool van_e_gyujteni, int collX, int collY, int mennyitad, bool meg)
     {
         //Jancsi letrehozasa
         jancsi = new jatekos(jancsiX, jancsiY, jancsihp);
@@ -49,7 +52,7 @@ public:
         //gyujtogethetok letrehozasa
         if (van_e_gyujteni)
         {
-            coll = new gyujteni(collX, collY, mennyitad);
+            coll = new gyujteni(collX, collY, mennyitad, meg);
         }
         else
         {
@@ -77,6 +80,8 @@ public:
     }
 
     int getCP() { return cp; }
+
+    int getJElet() { return jancsi->getElet(); }
 
     jatekmenet& setKilep(bool kilepo);
 
