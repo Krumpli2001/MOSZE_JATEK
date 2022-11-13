@@ -46,7 +46,7 @@ inline char getche(void)
     return getch_(1);
 }
 
-inline void pause()
+inline void spause()
 {
     int p = getchar();
 }

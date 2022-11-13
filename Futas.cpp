@@ -76,7 +76,7 @@ void story_be(std::string CH)
 		std::cerr << "\nNem sikerult a beolvasas\n";
 	}
 	std::cout << std::endl<<"\nNyomj entert a folytatashoz\n";
-	pause();
+	spause();
 	system(CLEAR);
 }
 
@@ -142,18 +142,18 @@ void run(int fut)
 		{
 			coutszoveg("\nAh tudom, allitok a kotellel egy csapdat\n");
 		}
-		pause();
+		spause();
 
 		coutszoveg("\nNa de a hideg ellen mi tevo legyek?\n");
 		if (elsovetel == '2' or masodikvetel == '2')
 		{
 			coutszoveg("\nFelveszem a kabatom, kulonben beteg leszek\n");
-			pause();
+			spause();
 		}
 		else
 		{
 			coutszoveg("\nSzerintem keresek egy barlangot ahol aludhatok, meg ne fazzak\n");
-			pause();
+			spause();
 			jatekmenet k(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
 			k.beolvas(k, "Text.txt");
 			k.kiir(k, 'M');

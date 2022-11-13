@@ -13,7 +13,7 @@ inline void KursorReset()
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), ccoord);
 }
 
-inline void pause()
+inline void spause()
 {
 	int p = _getch();
 }
