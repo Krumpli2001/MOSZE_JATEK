@@ -46,6 +46,11 @@ inline char getche(void)
     return getch_(1);
 }
 
+inline void pause()
+{
+    int p = getchar();
+}
+
 #include <sys/ioctl.h>
 #include <unistd.h>
 
