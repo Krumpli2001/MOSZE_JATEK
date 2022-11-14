@@ -63,24 +63,27 @@ void jatekmenet::mentes(jatekmenet& j)
                 f.close();
                 setKilep(true);
             }
+            else
+            {
+                std::cerr << "\nMENTESI HIBA!\n";
+            }
         }
         else if (biztos_m == 'N' or biztos_m == 'n')
         {
             std::cout << "Nem mentettel\n";
             setKilep(true);
-        }
-        else
-        {
-            std::cerr << "\nMENTESI HIBA!\n";
+            spause();
         }
     }
     else if (biztos_k == 'n' or biztos_k == 'N')
     {
         std::cout << "Nem leptel ki\n";
+        spause();
     }
     else
     {
         std::cout << "Hibas valasz\n";
+        spause();
     }
 
 }
@@ -228,6 +231,7 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
     system(CLEAR);
     bool leptunk_e;
     bool elso_kiiras = true;
+    bool fin = false;
 
     while (!kilep) {
         leptunk_e = false;
@@ -286,7 +290,15 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
         if((jancsi->getX() == 0) or (jancsi->getX() == j.szelsseg) or (jancsi->getY() == 0) or (jancsi->getY() == magassag))
         {
             kilep = true;
+            fin = true;
         }
+    }
+    if (!fin) 
+    {
+        system(CLEAR);
+        std::cout << "Kileptel!";
+        spause();
+        exit(0);
     }
     system(CLEAR);
 }
