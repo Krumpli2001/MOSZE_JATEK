@@ -20,11 +20,28 @@ public:
 
     int getX() { return x; }
     int getY() { return y; }
-    int getMennyit_Ad() { return mennyit_ad; }
-    bool getMegvolt() { return megvolt; }
+    gyujteni& setX(int sX)
+    {
+        x = sX;
+        return *this;
+    }
+    gyujteni& setY(int sY)
+    {
+        y = sY;
+        return *this;
+    }
+    gyujteni& setAD(int A)
+    {
+        mennyit_ad = A;
+        return *this;
+    }
+    
     gyujteni& setMegvolt(bool m)
     {
         megvolt = m;
         return *this;
     }
+
+    int getMennyit_Ad() { return mennyit_ad; }
+    bool getMegvolt() { return megvolt; }
 };

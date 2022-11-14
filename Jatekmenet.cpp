@@ -12,6 +12,25 @@ jatekmenet& jatekmenet::setKilep(bool kilepo)
     return *this;
 }
 
+void jatekmenet::gyujteni_be(int X, int Y, int M, int darab)
+{
+    coll[darab].setX(X);
+    coll[darab].setY(Y);
+    coll[darab].setAD(M);
+}
+
+void jatekmenet::megvan_e(int i)
+{
+    for (int j = 0; j < i; j++)
+    {
+        if ((jancsi->getX() == coll[j].getX()) and (jancsi->getY() == coll[j].getY()) and (coll[j].getMegvolt() == false))
+        {
+            jancsi->setElet(jancsi->getElet() + coll[j].getMennyit_Ad());
+            coll[j].setMegvolt(true);
+        }
+    }
+}
+
 //mentes
 void jatekmenet::mentes(jatekmenet& j)
 {
@@ -148,13 +167,7 @@ bool jatekmenet::lepes(jatekmenet& j)
     int elozo_jancsi_X = jancsi_X;
     int elozo_jancsi_Y = jancsi_Y;
 
-    //bool megvolt = false;
-    if ((jancsi->getX() == coll->getX()) and (jancsi->getY() == coll->getY()) and (coll->getMegvolt() == false))
-    {
-        jancsi->setElet(jancsi->getElet() + coll->getMennyit_Ad());
-        coll->setMegvolt(true);
-    }
-
+    megvan_e(coll_mennyiseg);
 
         char hit = _getch();
         hit = tolower(hit);

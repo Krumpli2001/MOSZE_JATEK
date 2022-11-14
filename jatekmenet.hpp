@@ -28,13 +28,14 @@ private:
     char** palya;
     int magassag;
     int szelsseg;
+    int coll_mennyiseg;
     jatekos* jancsi;
     ellenseg* boss;
     gyujteni* coll;
 
 public:
     jatekmenet() { kilep = false; cp = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
-    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, bool van_e_gyujteni, int collX, int collY, int mennyitad, bool meg)
+    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll)
     {
         //Jancsi letrehozasa
         jancsi = new jatekos(jancsiX, jancsiY, jancsihp);
@@ -50,9 +51,9 @@ public:
         }
 
         //gyujtogethetok letrehozasa
-        if (van_e_gyujteni)
+        if (mennyi_coll>0)
         {
-            coll = new gyujteni(collX, collY, mennyitad, meg);
+            coll = new gyujteni[mennyi_coll];
         }
         else
         {
@@ -66,18 +67,23 @@ public:
         palya = nullptr;
         magassag = 0;
         szelsseg = 0;
+        coll_mennyiseg = mennyi_coll;
     }
     ~jatekmenet()
     {
         delete jancsi;
         if (boss) { delete boss; }
-        if (coll) { delete coll; }
+        if (coll) { delete[] coll; }
         for (int i = 0; i < magassag; i++)
         {
             delete[] palya[i];
         }
         delete[] palya;
     }
+
+    void gyujteni_be(int X, int Y, int M, int darab);
+
+    void megvan_e(int i);
 
     int getCP() { return cp; }
 

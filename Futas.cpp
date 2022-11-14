@@ -131,7 +131,9 @@ void run(int fut)
 		}
 
 		//labirintus letrehozasa
-		jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 2);
+		j->gyujteni_be(1, 5, 1, 0);
+		j->gyujteni_be(2, 5, 2, 1);
 		//palya beolvasasa
 		j->beolvas(*j, "Text.txt");
 		//kiiras
@@ -172,7 +174,8 @@ void run(int fut)
 			//felteteles labirintus
 			coutszoveg("\nSzerintem keresek egy barlangot ahol aludhatok, meg ne fazzak\n");
 			spause();
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			j->kiir(*j, 'M');
 			delete j;
@@ -199,7 +202,8 @@ void run(int fut)
 
 		story_be("Story/CH2_2.txt");
 
-		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+		j->gyujteni_be(1, 5, 1, 0);
 		j->beolvas(*j, "Text.txt");
 		j->kiir(*j, 'M');
 		gelet = j->getJElet();
@@ -322,7 +326,8 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 		story_be("Story/CH3.txt");
 
-		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+		j->gyujteni_be(1, 5, 1, 0);
 		j->beolvas(*j, "Text.txt");
 		j->kiir(*j, 'M');
 		gelet = j->getJElet();
@@ -333,7 +338,8 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 		story_be("Story/CH4.txt");
 
-		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+		j->gyujteni_be(1, 5, 1, 0);
 		j->beolvas(*j, "Text.txt");
 		j->kiir(*j, 'M');
 		gelet = j->getJElet();
@@ -344,7 +350,8 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 		story_be("Story/CH5.txt");
 
-		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+		j->gyujteni_be(1, 5, 1, 0);
 		j->beolvas(*j, "Text.txt");
 		j->kiir(*j, 'M');
 		gelet = j->getJElet();
