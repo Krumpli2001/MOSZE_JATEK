@@ -122,12 +122,19 @@ void run(int fut)
 			}
 		}
 
-		jatekmenet j(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j->beolvas(*j, "Text.txt");
+		j->kiir(*j, 'M');
+
+
+
+		/*jatekmenet j(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
 		j.beolvas(j, "Text.txt");
-		j.kiir(j, 'M');
-		gelet = j.getJElet();
+		j.kiir(j, 'M');*/
+		gelet = j->getJElet();
 		gCP = 1;
-		//j.~jatekmenet();
+		delete j;
+		j = nullptr;
 
 		coutszoveg("\nJancsi: teljesitettem estere utam felet azonban, az ejszaka hideg, es egy kicsit ehes is vagyok, mit kene tennem ehseg ellen?\n");
 		if (elsovetel == '1' or masodikvetel == '1')
@@ -154,10 +161,17 @@ void run(int fut)
 		{
 			coutszoveg("\nSzerintem keresek egy barlangot ahol aludhatok, meg ne fazzak\n");
 			spause();
-			jatekmenet k(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
-			k.beolvas(k, "Text.txt");
-			k.kiir(k, 'M');
-			//k.~jatekmenet();
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+			j->beolvas(*j, "Text.txt");
+			j->kiir(*j, 'M');
+
+
+
+			/*jatekmenet j(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+			j.beolvas(j, "Text.txt");
+			j.kiir(j, 'M');*/
+			delete j;
+			j = nullptr;
 		}
 
 		story_be("Story/CH2_1.txt");
@@ -180,9 +194,19 @@ void run(int fut)
 
 		story_be("Story/CH2_2.txt");
 
-		jatekmenet l(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
-		l.beolvas(l, "Text.txt");
-		l.kiir(l, 'M');
+		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j->beolvas(*j, "Text.txt");
+		j->kiir(*j, 'M');
+
+
+
+		/*jatekmenet j(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j.beolvas(j, "Text.txt");
+		j.kiir(j, 'M');*/
+		gelet = j->getJElet();
+		gCP = 2;
+		delete j;
+		j = nullptr;
 
 		coutszoveg("\nN: a pancel olyan konnyu volt, hogy Jancsi ugy erezte, konnyebb futni mint gyalogolni.\
 Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n");
@@ -293,6 +317,24 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 				std::cout << "\nHibas bemenet\n";
 			}
 		}
+		spause();
+		story_be("Story/CH3.txt");
+
+		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j->beolvas(*j, "Text.txt");
+		j->kiir(*j, 'M');
+
+
+
+		/*jatekmenet j(4, 5, gelet, false, 0, 0, 0, nullptr, true, 1, 5, 1, false);
+		j.beolvas(j, "Text.txt");
+		j.kiir(j, 'M');*/
+		gelet = j->getJElet();
+		gCP = 3;
+		delete j;
+		j = nullptr;
+
+		story_be("Story/CH34.txt");
 	}
 }
 

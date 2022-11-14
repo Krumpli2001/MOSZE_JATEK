@@ -19,8 +19,8 @@ public:
     ~jatekos() {};
 
     void Reset();
-    //int getX() { return x; }
-    //int getY() { return y; }
+    int getX() { return x; }
+    int getY() { return y; }
     int getElet() { return elet; }
     jatekos& setElet(int hp);
     void MozgasFel();

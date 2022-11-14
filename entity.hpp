@@ -11,11 +11,9 @@ public:
         x = koordX;
         y = koordY;
     }
-    //virtual ~entity() {};
 
-    //virtual void func() =0;
-
-    int getX() { return x; }
-    int getY() { return y; }
+    virtual int getX() = 0;
+    virtual int getY() = 0;
+    virtual ~entity() {};
 
 };

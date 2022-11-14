@@ -5,9 +5,7 @@
 
 int main()
 {	
-	
 	run(kezdes());
-	//run(kezdes());
 }
 
 
