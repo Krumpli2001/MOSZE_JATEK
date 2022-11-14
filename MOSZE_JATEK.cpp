@@ -6,6 +6,7 @@
 int main()
 {	
 	run(kezdes());
+	return 0;
 }
 
 
