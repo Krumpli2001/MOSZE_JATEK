@@ -144,6 +144,7 @@ void run(int fut)
 		{
 			delete j;
 			j = nullptr;
+			exit(0);
 		}
 		gelet = j->getJElet();
 		gCP = 1;
@@ -188,6 +189,7 @@ void run(int fut)
 			{
 				delete j;
 				j = nullptr;
+				exit(0);
 			}
 			delete j;
 			j = nullptr;
@@ -221,6 +223,7 @@ void run(int fut)
 		{
 			delete j;
 			j = nullptr;
+			exit(0);
 		}
 		gelet = j->getJElet();
 		gCP = 2;
@@ -350,6 +353,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		{
 			delete j;
 			j = nullptr;
+			exit(0);
 		}
 		gelet = j->getJElet();
 		gCP = 3;
@@ -367,6 +371,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		{
 			delete j;
 			j = nullptr;
+			exit(0);
 		}
 		gelet = j->getJElet();
 		gCP = 4;
@@ -384,7 +389,9 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		{
 			delete j;
 			j = nullptr;
-		}		gelet = j->getJElet();
+			exit(0);
+		}
+		gelet = j->getJElet();
 		gCP = 4;
 		delete j;
 		j = nullptr;
