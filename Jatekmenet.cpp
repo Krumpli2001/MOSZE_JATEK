@@ -287,7 +287,7 @@ bool jatekmenet::kiir(jatekmenet& j, char boss_jele)
                 std::cout << "\nTALALTAL EGY KINCSET, AZ ELETED NAGYOBB LETT " << jancsi->getElet() - volt_elet << "PONTTAL";
             }
         }
-        if((jancsi->getX() == 0) or (jancsi->getX() == j.szelsseg) or (jancsi->getY() == 0) or (jancsi->getY() == magassag))
+        if((jancsi->getX() == 0) or (jancsi->getX() == (j.szelsseg-1)) or (jancsi->getY() == 0) or (jancsi->getY() == (j.magassag-1)))
         {
             kilep = true;
             fin = true;

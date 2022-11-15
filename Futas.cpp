@@ -1,8 +1,8 @@
 #include "futas.hpp"
 
 //jatekmenet konstruktora
-	//(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya,
-	//bool van_e_gyujteni, int collX, int collY, int mennyitad)
+//jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll)
+
 
 int kezdes()
 {
@@ -69,7 +69,7 @@ void story_be(std::string CH)
 			int karakterek = egysor.length();
 			for (int i = 0; i < karakterek; i++) {
 				std::cout << egysor[i];
-				std::this_thread::sleep_for(5ms);
+				//std::this_thread::sleep_for(5ms);
 			}
 			std::cout << std::endl;
 		}
@@ -109,9 +109,9 @@ void run(int fut)
 		coutszoveg("\nN: Mit viszel magaddal ? (2 valasztas)\n- 1. etel es ital\n- 2. meleg ruha\n- 3. kes es csuzli\n- 4. kotel\n(Ird be a megfelelo szamot)\n");
 		char elsovetel;
 		char masodikvetel;
-		bool helyesvetel = false;
+		bool helyesbe = false;
 		bool fin;
-		while (!helyesvetel)
+		while (!helyesbe)
 		{
 			std::cin >> elsovetel;
 			std::cin >> masodikvetel;
@@ -121,7 +121,7 @@ void run(int fut)
 				{
 					if(elsovetel != masodikvetel)
 					{
-						helyesvetel = true;
+						helyesbe = true;
 					}
 				}
 			}
@@ -199,16 +199,16 @@ void run(int fut)
 
 		coutszoveg("\nKovacs: eloszor is fiam, valaszd ki melyik kozetbol szeretned elkesziteni a kardodat :\n- Fekete\n- Kek\n- Lila\n- Zold\n");
 		std::string kardszin;
-		bool helyeskardszin = false;
-		while (!helyeskardszin)
+		bool helyesbe = false;
+		while (!helyesbe)
 		{
 			std::cin >> kardszin;
 			kardszin[0] = tolower(kardszin[0]);
 			if (kardszin[0] == 'f' or kardszin[0] == 'k' or kardszin[0] == 'l' or kardszin[0] == 'z')
 			{
-				helyeskardszin = true;
+				helyesbe = true;
 			}
-			if (!helyeskardszin) {
+			if (!helyesbe) {
 				coutszoveg("\nKovacs: Te fiam, nem latod a kozeteket?\n");
 			}
 		}
@@ -236,13 +236,13 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 		char ajtobe;
 		coutszoveg("\n1. - bekopogsz\n2.- benyitsz\n3.- bedontod az ajtot\n");
-		bool helyesajtobe = false;
-		while (!helyesajtobe)
+		bool helyesbe = false;
+		while (!helyesbe)
 		{
 			std::cin >> ajtobe;
 			if ((ajtobe == '1') or (ajtobe == '2') or (ajtobe == '3'))
 			{
-				helyesajtobe = true;
+				helyesbe = true;
 				if (ajtobe == '3')
 				{
 					coutszoveg("\nLovag : Most ezt miert kellett? Na mindegy ugy is rozoga volt. Amugy is ");
@@ -282,16 +282,16 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		coutszoveg("\nN : 3 nap  kemeny edzes utan eljott a teszt ideje\n");
 		coutszoveg("\nLovag : Ha a sarkany a karmaival tamad, mit csinalsz ?\n");
 		char mitcsinalsz;
-		bool helyesmitcsinalsz = false;
+		bool helyesbe = false;
 
 		coutszoveg("\n1.- elugrasz elole\n2.- vedekezel a kardoddal\n3.- elszaladsz\n4.- alsz egy helybe\n");
-		while (!helyesmitcsinalsz)
+		while (!helyesbe)
 		{
 			std::cin >> mitcsinalsz;
 			if (mitcsinalsz == '1')
 			{
 				coutszoveg("\nHelyes!\n");
-				helyesmitcsinalsz = true;
+				helyesbe = true;
 			}
 			else if (mitcsinalsz == '2')
 			{
@@ -317,14 +317,14 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 			coutszoveg("3. - hasznalod az ermet\n");
 		}
 
-		helyesmitcsinalsz = false;
-		while (!helyesmitcsinalsz)
+		helyesbe = false;
+		while (!helyesbe)
 		{
 			std::cin >> mitcsinalsz;
 			if (mitcsinalsz == '1')
 			{
 				coutszoveg("\nHelyes!\n");
-				helyesmitcsinalsz = true;
+				helyesbe = true;
 			}
 			else if (mitcsinalsz == '2')
 			{
@@ -333,7 +333,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 			else if ((mitcsinalsz == '3') and (ermemutatas[0] == 'i'))
 			{
 				coutszoveg("\nAz is lehet, habar kockazatos szerintem.\n");
-				helyesmitcsinalsz = true;
+				helyesbe = true;
 			}
 			else
 			{
@@ -392,28 +392,60 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 			exit(0);
 		}
 		gelet = j->getJElet();
-		gCP = 4;
+		gCP = 5;
 		delete j;
 		j = nullptr;
 		//CP5
 
-		story_be("Story/CH5.txt");
+		story_be("Story/CH6.txt");
+
+		coutszoveg("\nN: Maradsz ejszakara [ I / N ]\n");
+		std::string maradsz;
+		bool helyesbe = false;
+		bool ded = false;
+		while (!helyesbe)
+		{
+			std::cin >> maradsz;
+			if (isalpha(maradsz[0]))
+			{
+				maradsz[0] = tolower(maradsz[0]);
+				if (maradsz[0] == 'i' or maradsz[0] == 'n')
+				{
+				helyesbe = true;
+				if (maradsz[0] == 'i')
+				{
+					ded = true;
+				}
+				}
+			}
+			else
+			{
+				std::cout << "Hibsa bemenet!";
+			}
+		}
+		if (ded)
+		{
+			coutszoveg("\nN: Meg kellett volna fogadni a mano tanacsat, miutan lehunytad a szemed, tobbet mar soha nem nyitottad ki ujra\n");
+			gCP = 5;
+		}
+		
+		story_be("Story/CH7.txt");
+
+		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+		j->gyujteni_be(1, 5, 1, 0);
+		j->beolvas(*j, "Text.txt");
+		fin = j->kiir(*j, 'M');
+		if (!fin)
+		{
+			delete j;
+			j = nullptr;
+			exit(0);
+		}
+		gelet = j->getJElet();
+		gCP = 6;
+		delete j;
+		j = nullptr;
 
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
