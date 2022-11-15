@@ -101,6 +101,6 @@ public:
 
     bool lepes(jatekmenet& j);
 
-    void kiir(jatekmenet& j, char boss_jele);
+    bool kiir(jatekmenet& j, char boss_jele);
 
 };

@@ -110,6 +110,7 @@ void run(int fut)
 		char elsovetel;
 		char masodikvetel;
 		bool helyesvetel = false;
+		bool fin;
 		while (!helyesvetel)
 		{
 			std::cin >> elsovetel;
@@ -137,8 +138,13 @@ void run(int fut)
 		//palya beolvasasa
 		j->beolvas(*j, "Text.txt");
 		//kiiras
-		j->kiir(*j, 'M');
+		fin = j->kiir(*j, 'M');
 		//elet, CP frissitese
+		if (!fin)
+		{
+			delete j;
+			j = nullptr;
+		}
 		gelet = j->getJElet();
 		gCP = 1;
 		//labirintus torlese
@@ -177,7 +183,12 @@ void run(int fut)
 			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
-			j->kiir(*j, 'M');
+			fin = j->kiir(*j, 'M');
+			if (!fin)
+			{
+				delete j;
+				j = nullptr;
+			}
 			delete j;
 			j = nullptr;
 		}
@@ -205,7 +216,12 @@ void run(int fut)
 		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 		j->gyujteni_be(1, 5, 1, 0);
 		j->beolvas(*j, "Text.txt");
-		j->kiir(*j, 'M');
+		fin = j->kiir(*j, 'M');
+		if (!fin)
+		{
+			delete j;
+			j = nullptr;
+		}
 		gelet = j->getJElet();
 		gCP = 2;
 		delete j;
@@ -329,7 +345,12 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 		j->gyujteni_be(1, 5, 1, 0);
 		j->beolvas(*j, "Text.txt");
-		j->kiir(*j, 'M');
+		fin = j->kiir(*j, 'M');
+		if (!fin)
+		{
+			delete j;
+			j = nullptr;
+		}
 		gelet = j->getJElet();
 		gCP = 3;
 		delete j;
@@ -341,7 +362,12 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 		j->gyujteni_be(1, 5, 1, 0);
 		j->beolvas(*j, "Text.txt");
-		j->kiir(*j, 'M');
+		fin = j->kiir(*j, 'M');
+		if (!fin)
+		{
+			delete j;
+			j = nullptr;
+		}
 		gelet = j->getJElet();
 		gCP = 4;
 		delete j;
@@ -353,8 +379,12 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 		j->gyujteni_be(1, 5, 1, 0);
 		j->beolvas(*j, "Text.txt");
-		j->kiir(*j, 'M');
-		gelet = j->getJElet();
+		fin = j->kiir(*j, 'M');
+		if (!fin)
+		{
+			delete j;
+			j = nullptr;
+		}		gelet = j->getJElet();
 		gCP = 4;
 		delete j;
 		j = nullptr;

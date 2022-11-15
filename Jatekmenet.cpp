@@ -226,7 +226,7 @@ bool jatekmenet::lepes(jatekmenet& j)
 }
 
 //palya kirajzolasa
-void jatekmenet::kiir(jatekmenet& j, char boss_jele)
+bool jatekmenet::kiir(jatekmenet& j, char boss_jele)
 {
     system(CLEAR);
     bool leptunk_e;
@@ -298,7 +298,7 @@ void jatekmenet::kiir(jatekmenet& j, char boss_jele)
         system(CLEAR);
         std::cout << "Kileptel!";
         spause();
-        exit(0);
     }
     system(CLEAR);
+    return fin;
 }
