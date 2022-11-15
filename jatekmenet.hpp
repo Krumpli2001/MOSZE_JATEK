@@ -89,6 +89,8 @@ public:
 
     int getJElet() { return jancsi->getElet(); }
 
+    int getBSebzes() { return boss->getSebzes(); }
+
     jatekmenet& setKilep(bool kilepo);
 
     jatekmenet& setCP(int cpszam);

@@ -70,19 +70,19 @@ void jatekmenet::mentes(jatekmenet& j)
         }
         else if (biztos_m == 'N' or biztos_m == 'n')
         {
-            std::cout << "Nem mentettel\n";
+            std::cout << "\nNem mentettel\n";
             setKilep(true);
             spause();
         }
     }
     else if (biztos_k == 'n' or biztos_k == 'N')
     {
-        std::cout << "Nem leptel ki\n";
+        std::cout << "\nNem leptel ki\n";
         spause();
     }
     else
     {
-        std::cout << "Hibas valasz\n";
+        std::cout << "\nHibas valasz\n";
         spause();
     }
 
@@ -217,11 +217,6 @@ bool jatekmenet::lepes(jatekmenet& j)
             //boss->Reset();
             return true;
         }
-        else
-        {
-            std::cout << "\nHibas bemenet\n";
-            return true;
-        }
     return false;
 }
 
@@ -251,6 +246,8 @@ bool jatekmenet::kiir(jatekmenet& j, char boss_jele)
             {
                 for (int j = 0; j < szelsseg; j++)
                 {
+                    bool volt_kiiras = false;
+
                     //"lenyek"
                     int jancsi_X = jancsi->getX();
                     int Jancsi_Y = jancsi->getY();
@@ -266,16 +263,21 @@ bool jatekmenet::kiir(jatekmenet& j, char boss_jele)
                     if (jancsi_X == j and Jancsi_Y == i)
                     {
                         std::cout << "J";
+                        volt_kiiras = true;
                     }
 
-                    else if (boss) {
+                    if (boss) {
                         if (ellllenseg_X == j and ellllenseg_Y == i)
                         {
                             std::cout << boss_jele;
+                            volt_kiiras = true;
                         }
                     }
-                    else
+
+                    if (!volt_kiiras)
+                    {
                         std::cout << palya[i][j];
+                    }
                 }
                 std::cout << std::endl;
             }
@@ -292,11 +294,19 @@ bool jatekmenet::kiir(jatekmenet& j, char boss_jele)
             kilep = true;
             fin = true;
         }
+        if (boss)
+        {
+             if((jancsi->getX() == boss->getX()) and (jancsi->getY() == boss->getY()))
+             {
+                 kilep = true;
+                 fin = true;
+             }
+        }
     }
     if (!fin) 
     {
         system(CLEAR);
-        std::cout << "Kileptel!";
+        std::cout << "\nKileptel!\n";
         spause();
     }
     system(CLEAR);
