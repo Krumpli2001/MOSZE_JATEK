@@ -192,7 +192,6 @@ void run(int fut)
 		int gelet = 3;
 		int gCP = 0;
 		bool helyesbe = false;
-		bool fin;
 		bool germemutatas = false;
 		jatekmenet* j = nullptr;
 
@@ -254,29 +253,18 @@ void run(int fut)
 			spause();
 
 			//kerdesre valasz
-			coutszoveg("\nNa de a hideg ellen mi tevo legyek?\n");
+			story_kerdesek("Story/CH1_KERDES2.txt", 5);
 			if (elsovetel == '2' or masodikvetel == '2')
 			{
-				coutszoveg("\nFelveszem a kabatom, kulonben beteg leszek\n");
+				story_kerdesek("Story/CH1_KERDES2.txt", 6);
 				spause();
 			}
 			else
 			{
 				//felteteles labirintus
-				coutszoveg("\nSzerintem keresek egy barlangot ahol aludhatok, meg ne fazzak\n");
+				story_kerdesek("Story/CH1_KERDES2.txt", 7);
 				spause();
-				j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-				j->gyujteni_be(1, 5, 1, 0);
-				j->beolvas(*j, "Text.txt");
-				fin = j->kiir(*j, 'M');
-				if (!fin)
-				{
-					delete j;
-					j = nullptr;
-					exit(0);
-				}
-				delete j;
-				j = nullptr;
+				gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 			}
 			gCP = 1;
 		}
