@@ -21,7 +21,7 @@ int kezdes()
 		if (inditas[0] == '4' or inditas[0] == 'k')
 		{
 			helyes = true;
-			return 0;
+			return 4;
 		}
 		//Inditas eleerol
 		if (inditas[0] == '1' or inditas[0] == 'u')
@@ -84,6 +84,59 @@ void story_be(std::string CH)
 	system(CLEAR);
 }
 
+void story_kerdesek(std::string CH, int pos)
+{
+	std::string egysor;
+
+	std::ifstream f(CH);
+	int karakterek = 0;
+
+	if (f.is_open())
+	{
+		//char skip;
+		using namespace std::chrono_literals;
+		int hanyadik_sor = 0;
+		while (std::getline(f, egysor)) {
+			//karakterenkenti kiiras
+			int karakterek = egysor.length();
+			bool var = false;
+			//sorok szamolasa
+			if (egysor[0] == '@')
+			{
+				hanyadik_sor++;
+			}
+			//kiiras
+			for (int i = 2; i < karakterek; i++) {
+				// #-nel megall
+				if (egysor[i] == '#' and hanyadik_sor == pos)
+				{
+					var = true;
+				}
+				//@ kiirja a sort
+				if (!var and egysor[0] == '@' and hanyadik_sor == pos)
+				{
+				std::cout << egysor[i];
+				}
+				//std::this_thread::sleep_for(5ms);
+			}
+			if (hanyadik_sor == pos)
+			{
+				pos++;
+				std::cout << std::endl;
+			}
+			if (var)
+			{
+				break;
+			}
+		}
+		f.close();
+	}
+	else
+	{
+		std::cerr << "\nNem sikerult a beolvasas\n";
+	}
+}
+
 void coutszoveg(std::string sz)
 {
 	//karakterenkenti kiiras
@@ -95,15 +148,53 @@ void coutszoveg(std::string sz)
 	}
 }
 
+//max 3 coll
+int palya_letrehoz(jatekmenet* j, int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll, int coll1X, int coll1Y, int coll1M, int coll2X, int coll2Y, int coll2M, int coll3X, int coll3Y, int coll3M, std::string palya_neve, char boss_char)
+{
+	bool fin;
+	//labirintus letrehozasa
+	j = new jatekmenet(4, 5, jancsihp, false, 0, 0, 0, nullptr, 2);
+	//gyujtogetni valok letrehozasa, ha van
+	if (mennyi_coll >= 1)
+	{
+		j->gyujteni_be(coll1X, coll1Y, coll1M, 0);
+		if (mennyi_coll >= 2)
+		{
+			j->gyujteni_be(coll2X, coll2Y, coll2M, 1);
+			if (mennyi_coll == 3)
+			{
+				j->gyujteni_be(coll3X, coll3Y, coll3M, 2);
+			}
+		}
+	}
+	//palya beolvasasa
+	j->beolvas(*j, palya_neve);
+	//kiiras
+	fin = j->kiir(*j, boss_char);
+	//elet, CP frissitese
+	if (!fin)
+	{
+		delete j;
+		j = nullptr;
+		exit(0);
+	}
+	int gelet = j->getJElet();
+	//labirintus torlese
+	delete j;
+	j = nullptr;
+	return gelet;
+}
+
 void run(int fut)
 {
-	if (fut != 0)
+	if (fut != 4)
 	{
 		int gelet = 3;
 		int gCP = 0;
 		bool helyesbe = false;
 		bool fin;
 		bool germemutatas = false;
+		jatekmenet* j = nullptr;
 
 
 		if (gCP == 0)
@@ -113,7 +204,7 @@ void run(int fut)
 			story_be("Story/CH1.txt");
 
 			//kerdes
-			coutszoveg("\nN: Mit viszel magaddal ? (2 valasztas)\n- 1. etel es ital\n- 2. meleg ruha\n- 3. kes es csuzli\n- 4. kotel\n(Ird be a megfelelo szamot)\n");
+			story_kerdesek("Story/CH1_KERDES1.txt", 1);
 			char elsovetel;
 			char masodikvetel;
 			while (!helyesbe)
@@ -128,6 +219,14 @@ void run(int fut)
 						{
 							helyesbe = true;
 						}
+						else
+						{
+							std::cout << "\nKetszer adtad meg ugy azt a szamot!\n";
+						}
+					}
+					else
+					{
+						std::cout << "\nHibas bemenet\n";
 					}
 				}
 				else
@@ -136,40 +235,21 @@ void run(int fut)
 				}
 			}
 
-			//labirintus letrehozasa
-			jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 2);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->gyujteni_be(2, 5, 2, 1);
-			//palya beolvasasa
-			j->beolvas(*j, "Text.txt");
-			//kiiras
-			fin = j->kiir(*j, 'M');
-			//elet, CP frissitese
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			//labirintus torlese
-			delete j;
-			j = nullptr;
-			//CP1
+			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 2, 1, 5, 1, 2, 5, 2, 0, 0, 0, "Text.txt", 'M');
 
 			//kerdesre valasz
-			coutszoveg("\nJancsi: teljesitettem estere utam felet azonban, az ejszaka hideg, es egy kicsit ehes is vagyok, mit kene tennem ehseg ellen?\n");
+			story_kerdesek("Story/CH1_KERDES2.txt", 1);
 			if (elsovetel == '1' or masodikvetel == '1')
 			{
-				coutszoveg("\nAh tudom, megeszem amit magammal hoztam\n");
+				story_kerdesek("Story/CH1_KERDES2.txt", 2);
 			}
 			else if (elsovetel == '3' or masodikvetel == '3')
 			{
-				coutszoveg("\nAh tudom, elmegyek vadaszni a kessel es csuzlival\n");
+				story_kerdesek("Story/CH1_KERDES2.txt", 3);
 			}
 			else if (elsovetel == '4' or masodikvetel == '4')
 			{
-				coutszoveg("\nAh tudom, allitok a kotellel egy csapdat\n");
+				story_kerdesek("Story/CH1_KERDES2.txt", 4);
 			}
 			spause();
 
@@ -224,7 +304,7 @@ void run(int fut)
 
 			story_be("Story/CH2_2.txt");
 
-			jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, 'M');
@@ -358,7 +438,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 			story_be("Story/CH3.txt");
 
-			jatekmenet *j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, 'M');
@@ -381,7 +461,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 			story_be("Story/CH4.txt");
 
-			jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, 'M');
@@ -403,7 +483,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 			story_be("Story/CH5.txt");
 
-			jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, 'M');
@@ -471,7 +551,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 			story_be("Story/CH7.txt");
 
-			jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, 'M');
@@ -574,7 +654,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 			while (gCP == 7)
 			{
 				int eredeti_hp = gelet;
-				jatekmenet* j = new jatekmenet(4, 5, gelet, true, 2, 5, 5, nullptr, 1);
+				j = new jatekmenet(4, 5, gelet, true, 2, 5, 5, nullptr, 1);
 				//j->gyujteni_be(1, 5, 1, 0);
 				j->beolvas(*j, "Text.txt");
 				fin = j->kiir(*j, 'M');
@@ -637,7 +717,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		{
 			story_be("Story/CH8.txt");
 
-			jatekmenet* j = new jatekmenet(4, 5, gelet, true, 2, 5, 5, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, true, 2, 5, 5, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, 'G');
@@ -726,7 +806,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 			coutszoveg("\nJancsi: elkeszultek a gyogyitalok, mehetunk is tovabb!\nMori: Gyere pattanj fel.\n");
 			spause();
 
-			jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, 'M');
@@ -748,7 +828,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 			coutszoveg("\nMori: Na es most, hogyan tovabb?\nJancsi: Nezd, ott latok egy csonakot nezzuk meg.\n");
 			spause();
 
-			jatekmenet* j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, 'M');
@@ -786,7 +866,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		{
 			story_be("Story/CH12.txt");
 
-			jatekmenet* j = new jatekmenet(4, 5, gelet, true, 2, 5, 0, nullptr, 1);
+			j = new jatekmenet(4, 5, gelet, true, 2, 5, 0, nullptr, 1);
 			j->gyujteni_be(1, 5, 1, 0);
 			j->beolvas(*j, "Text.txt");
 			fin = j->kiir(*j, ' ');
