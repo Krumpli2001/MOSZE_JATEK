@@ -1,0 +1,40 @@
+@ Kovacs: Eloszor is fiam, valaszd ki melyik kozetbol szeretned elkesziteni a kardodat :
+@ - Fekete
+@ - Kek
+@ - Lila
+@ - Zold #
+@ N: a pancel olyan konnyu volt, hogy Jancsi ugy erezte, konnyebb futni mint gyalogolni.
+@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.
+@ 1. - bekopogsz
+@ 2.- benyitsz
+@ 3.- bedontod az ajtot #
+@ Lovag : Most ezt miert kellett? Na mindegy ugy is rozoga volt. Amugy is #
+@ Hibas bemenet! #
+@ Lovag: #
+@ Te meg mit akarsz itt te gyerek!?
+@ Jancsi : Faber kovacs mester kuldott, azt mondta te megtanitasz a kardforgatasra.
+@ N : megmutatod neki az ermet
+@ - Igen
+@ - Nem #
+@ Lovag : Barmire is keszulsz igazan megbizhat benned,
+@ ha az oreg torpe a tuzallosag ermet is neked adta. Egye fene megtanitalak, de nem ingyen, #
+@ javitsd meg az ajtomat te mamlasz, miert kellett betorni, van kilincse is. #
+@ Mire kell neked a kardforgatas muveszete? (ird be a valszod) #
+@ Jol van, ez egy nemes indok, megtanitalak. #
+@ N : 3 nap  kemeny edzes utan eljott a teszt ideje
+@ Lovag : Ha a sarkany a karmaival tamad, mit csinalsz ?
+@ 1.- elugrasz elole
+@ 2.- vedekezel a kardoddal
+@ 3.- elszaladsz
+@ 4.- alsz egy helybe #
+@ Helyes! #
+@ Nem, nem birod el a sarkanyt, ahhoz tul nagy! #
+@ Nem, tud repulni, utol fog erni! #
+@ Remenytelen... #
+@ Hibas bemenet! #
+@ Lovag : Ha tuzet okad, azt hogy veded ki?
+@ 1. - elbujsz egy szikla moge
+@ 2. - megprobalsz elszaladni elole #
+@ 3. - hasznalod az ermet #
+@ Nem, a tuz utol fog erni! #
+@ Az is lehet, habar kockazatos szerintem. #

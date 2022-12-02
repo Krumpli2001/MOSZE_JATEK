@@ -51,6 +51,7 @@ int kezdes()
 	return -1;
 }
 
+//nagyobb story reszletekne - van press enter a vegen
 void story_be(std::string CH)
 {
 	//Kepernyo uritese
@@ -84,6 +85,7 @@ void story_be(std::string CH)
 	system(CLEAR);
 }
 
+//rovidebb kerdesekre van, 1-1 sor, "sorkovetes" - nincs press enter a vegen
 void story_kerdesek(std::string CH, int pos)
 {
 	std::string egysor;
@@ -193,6 +195,7 @@ void run(int fut)
 		int gCP = 0;
 		bool helyesbe = false;
 		bool germemutatas = false;
+		bool fin;
 		jatekmenet* j = nullptr;
 
 
@@ -220,49 +223,49 @@ void run(int fut)
 						}
 						else
 						{
-							std::cout << "\nKetszer adtad meg ugy azt a szamot!\n";
+							story_kerdesek("Story/CH1_KERDES1.txt", 15);
 						}
 					}
 					else
 					{
-						std::cout << "\nHibas bemenet\n";
+						story_kerdesek("Story/CH1_KERDES1.txt", 16);
 					}
 				}
 				else
 				{
-					std::cout << "\nHibas bemenet\n";
+					story_kerdesek("Story/CH1_KERDES1.txt", 16);
 				}
 			}
 
 			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 2, 1, 5, 1, 2, 5, 2, 0, 0, 0, "Text.txt", 'M');
 
 			//kerdesre valasz
-			story_kerdesek("Story/CH1_KERDES2.txt", 1);
+			story_kerdesek("Story/CH1_KERDES1.txt", 7);
 			if (elsovetel == '1' or masodikvetel == '1')
 			{
-				story_kerdesek("Story/CH1_KERDES2.txt", 2);
+				story_kerdesek("Story/CH1_KERDES1.txt", 9);
 			}
 			else if (elsovetel == '3' or masodikvetel == '3')
 			{
-				story_kerdesek("Story/CH1_KERDES2.txt", 3);
+				story_kerdesek("Story/CH1_KERDES1.txt", 10);
 			}
 			else if (elsovetel == '4' or masodikvetel == '4')
 			{
-				story_kerdesek("Story/CH1_KERDES2.txt", 4);
+				story_kerdesek("Story/CH1_KERDES1.txt", 11);
 			}
 			spause();
 
 			//kerdesre valasz
-			story_kerdesek("Story/CH1_KERDES2.txt", 5);
+			story_kerdesek("Story/CH1_KERDES1.txt", 12);
 			if (elsovetel == '2' or masodikvetel == '2')
 			{
-				story_kerdesek("Story/CH1_KERDES2.txt", 6);
+				story_kerdesek("Story/CH1_KERDES1.txt", 13);
 				spause();
 			}
 			else
 			{
 				//felteteles labirintus
-				story_kerdesek("Story/CH1_KERDES2.txt", 7);
+				story_kerdesek("Story/CH1_KERDES1.txt", 14);
 				spause();
 				gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 			}
@@ -274,7 +277,7 @@ void run(int fut)
 
 			story_be("Story/CH2_1.txt");
 
-			coutszoveg("\nKovacs: eloszor is fiam, valaszd ki melyik kozetbol szeretned elkesziteni a kardodat :\n- Fekete\n- Kek\n- Lila\n- Zold\n");
+			story_kerdesek("Story/CH2_KERDES1.txt", 0);
 			std::string kardszin;
 			bool helyesbe = false;
 			while (!helyesbe)
@@ -292,26 +295,12 @@ void run(int fut)
 
 			story_be("Story/CH2_2.txt");
 
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'M');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			delete j;
-			j = nullptr;
-			//CP2
+			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 
-			coutszoveg("\nN: a pancel olyan konnyu volt, hogy Jancsi ugy erezte, konnyebb futni mint gyalogolni.\
-Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n");
+
+			story_kerdesek("Story/CH2_KERDES1.txt", 6);
 
 			char ajtobe;
-			coutszoveg("\n1. - bekopogsz\n2.- benyitsz\n3.- bedontod az ajtot\n");
 			helyesbe = false;
 			while (!helyesbe)
 			{
@@ -321,77 +310,72 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 					helyesbe = true;
 					if (ajtobe == '3')
 					{
-						coutszoveg("\nLovag : Most ezt miert kellett? Na mindegy ugy is rozoga volt. Amugy is ");
+						story_kerdesek("Story/CH2_KERDES1.txt", 11);
 					}
 				}
 				else
 				{
-					std::cout << "\nHibas bemenet\n";
+					story_kerdesek("Story/CH2_KERDES1.txt", 12);
 				}
 			}
 			if (ajtobe != '3')
 			{
-				coutszoveg("Lovag:");
+				story_kerdesek("Story/CH2_KERDES1.txt", 13);
 			}
-			coutszoveg("Te meg mit akarsz itt te gyerek!?\n");
-			coutszoveg("\nJancsi : Faber kovacs mester kuldott, azt mondta te megtanitasz a kardforgatasra.\n");
-			coutszoveg("\nN : megmutatod neki az ermet\n- Igen\n- Nem\n");
+			story_kerdesek("Story/CH2_KERDES1.txt", 14);
 			std::string ermemutatas;
 			std::cin >> ermemutatas;
 			ermemutatas[0] = tolower(ermemutatas[0]);
 			if (ermemutatas[0] == 'i')
 			{
-				coutszoveg("\nLovag : Barmire is keszulsz igazan megbizhat benned, ha az oreg torpe a tuzallosag ermet is neked adta. Egye fene megtanitalak.\n");
+				story_kerdesek("Story/CH2_KERDES1.txt", 19);
 				germemutatas = true;
 			}
-			coutszoveg("\nMeg biza, de nem ingyen, ");
 			if (ajtobe == '3')
 			{
-				coutszoveg("Javitsd meg az ajtomat te mamlasz, miert kellett betorni, van kilincse is.\n");
+				story_kerdesek("Story/CH2_KERDES1.txt", 21);
 			}
 			else
 			{
-				coutszoveg("Mire kell neked a kardforgatas muveszete?\n");
+				story_kerdesek("Story/CH2_KERDES1.txt", 22);
 				std::string indok;
 				std::cin >> indok;
-				coutszoveg("\nJol van, ez egy nemes indok, megtanitalak.\n");
+				story_kerdesek("Story/CH2_KERDES1.txt", 23);
 			}
-			coutszoveg("\nN : 3 nap  kemeny edzes utan eljott a teszt ideje\n");
-			coutszoveg("\nLovag : Ha a sarkany a karmaival tamad, mit csinalsz ?\n");
+			story_kerdesek("Story/CH2_KERDES1.txt", 24);
+
 			char mitcsinalsz;
 			helyesbe = false;
-
-			coutszoveg("\n1.- elugrasz elole\n2.- vedekezel a kardoddal\n3.- elszaladsz\n4.- alsz egy helybe\n");
 			while (!helyesbe)
 			{
 				std::cin >> mitcsinalsz;
 				if (mitcsinalsz == '1')
 				{
-					coutszoveg("\nHelyes!\n");
+					story_kerdesek("Story/CH2_KERDES1.txt", 30);
 					helyesbe = true;
 				}
 				else if (mitcsinalsz == '2')
 				{
-					coutszoveg("\nNem, nem birod el a sarkanyt, ahhoz tul nagy!\n");
+					story_kerdesek("Story/CH2_KERDES1.txt", 31);
 				}
 				else if (mitcsinalsz == '3')
 				{
-					coutszoveg("\nNem, tud repulni, utol fog erni!\n");
+					story_kerdesek("Story/CH2_KERDES1.txt", 32);
 				}
 				else if (mitcsinalsz == '4')
 				{
-					coutszoveg("\nRemenytelen...\n");
+					story_kerdesek("Story/CH2_KERDES1.txt", 33);
 				}
 				else
 				{
-					std::cout << "\nHibas bemenet\n";
+					story_kerdesek("Story/CH2_KERDES1.txt", 34);
 				}
 			}
 
-			coutszoveg("\nLovag : Ha tuzet okad, azt hogy veded ki?\n1. - elbujsz egy szikla moge\n2. - megprobalsz elszaladni elolen\n");
+			story_kerdesek("Story/CH2_KERDES1.txt", 35);
 			if (ermemutatas[0] == 'i')
 			{
-				coutszoveg("3. - hasznalod az ermet\n");
+				story_kerdesek("Story/CH2_KERDES1.txt", 38);
 			}
 
 			helyesbe = false;
@@ -400,21 +384,21 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 				std::cin >> mitcsinalsz;
 				if (mitcsinalsz == '1')
 				{
-					coutszoveg("\nHelyes!\n");
+					story_kerdesek("Story/CH2_KERDES1.txt", 30);
 					helyesbe = true;
 				}
 				else if (mitcsinalsz == '2')
 				{
-					coutszoveg("\nNem, a tuz utol fog erni!\n");
+					story_kerdesek("Story/CH2_KERDES1.txt", 39);
 				}
 				else if ((mitcsinalsz == '3') and (ermemutatas[0] == 'i'))
 				{
-					coutszoveg("\nAz is lehet, habar kockazatos szerintem.\n");
+					story_kerdesek("Story/CH2_KERDES1.txt", 40);
 					helyesbe = true;
 				}
 				else
 				{
-					std::cout << "\nHibas bemenet\n";
+					story_kerdesek("Story/CH2_KERDES1.txt", 34);
 				}
 			}
 			gCP = 2;
@@ -425,67 +409,21 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 		{
 
 			story_be("Story/CH3.txt");
-
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'M');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			gCP = 3;
-			delete j;
-			j = nullptr;
-			//CP3
-
+			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 		}
 
 		if (gCP == 3)
 		{
 
 			story_be("Story/CH4.txt");
-
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'M');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			gCP = 4;
-			delete j;
-			j = nullptr;
-			//CP4
+			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 		}
 
 		if (gCP == 4)
 		{
 
 			story_be("Story/CH5.txt");
-
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'M');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			gCP = 5;
-			delete j;
-			j = nullptr;
-			//CP5
+			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 		}
 
 		if (gCP == 5)
@@ -495,7 +433,7 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 
 			while (gCP == 5)
 			{
-				coutszoveg("\nN: Maradsz ejszakara [ I / N ]\n");
+				story_kerdesek("Story/CH6_KERDES1.txt", 1);
 				bool helyesbe = false;
 				bool ded = false;
 				while (!helyesbe)
@@ -520,14 +458,12 @@ Egy fel nap alatt a fovarosban talalta magat eques, az oreg lovag haza elott.\n"
 					}
 					else
 					{
-						std::cout << "Hibsa bemenet!";
+						story_kerdesek("Story/CH6_KERDES1.txt", 2);
 					}
 				}
 				if (ded)
 				{
-					coutszoveg("\nN: Meg kellett volna fogadni a mano tanacsat, miutan lehunytad a szemed, tobbet mar soha nem nyitottad ki ujra\n");
-					spause();
-					std::cout << "MEGHALTAL";
+					story_kerdesek("Story/CH6_KERDES1.txt", 3);
 					spause();
 					gCP = 5;
 				}
