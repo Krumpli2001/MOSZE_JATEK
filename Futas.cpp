@@ -151,9 +151,10 @@ void coutszoveg(std::string sz)
 }
 
 //max 3 coll
-int palya_letrehoz(jatekmenet* j, int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll, int coll1X, int coll1Y, int coll1M, int coll2X, int coll2Y, int coll2M, int coll3X, int coll3Y, int coll3M, std::string palya_neve, char boss_char)
+void palya_letrehoz(jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_e_boss, int bossX, int bossY, int seb, int* gsebzes, char** palya, int mennyi_coll, int coll1X, int coll1Y, int coll1M, int coll2X, int coll2Y, int coll2M, int coll3X, int coll3Y, int coll3M, std::string palya_neve, char boss_char)
 {
 	bool fin;
+	int jancsihp = *ghp;
 	//labirintus letrehozasa
 	j = new jatekmenet(4, 5, jancsihp, false, 0, 0, 0, nullptr, 2);
 	//gyujtogetni valok letrehozasa, ha van
@@ -180,11 +181,18 @@ int palya_letrehoz(jatekmenet* j, int jancsiX, int jancsiY, int jancsihp, bool v
 		j = nullptr;
 		exit(0);
 	}
+	//player elet kiirasa
 	int gelet = j->getJElet();
+	*ghp = gelet;
+	//sebzes kiirasa
+	if (gsebzes)
+	{
+	int sebzes = j->getBSebzes();
+	*gsebzes = sebzes;
+	}
 	//labirintus torlese
 	delete j;
 	j = nullptr;
-	return gelet;
 }
 
 void run(int fut)
@@ -193,6 +201,7 @@ void run(int fut)
 	{
 		int gelet = 3;
 		int gCP = 0;
+		int sebzes = 0;
 		bool helyesbe = false;
 		bool germemutatas = false;
 		bool fin;
@@ -237,7 +246,7 @@ void run(int fut)
 				}
 			}
 
-			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 2, 1, 5, 1, 2, 5, 2, 0, 0, 0, "Text.txt", 'M');
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 2, 1, 5, 1, 2, 5, 2, 0, 0, 0, "Text.txt", 'M');
 
 			//kerdesre valasz
 			story_kerdesek("Story/CH1_KERDES1.txt", 7);
@@ -267,7 +276,7 @@ void run(int fut)
 				//felteteles labirintus
 				story_kerdesek("Story/CH1_KERDES1.txt", 14);
 				spause();
-				gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+				palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 			}
 			gCP = 1;
 		}
@@ -295,7 +304,7 @@ void run(int fut)
 
 			story_be("Story/CH2_2.txt");
 
-			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 
 
 			story_kerdesek("Story/CH2_KERDES1.txt", 6);
@@ -409,21 +418,21 @@ void run(int fut)
 		{
 
 			story_be("Story/CH3.txt");
-			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 		}
 
 		if (gCP == 3)
 		{
 
 			story_be("Story/CH4.txt");
-			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 		}
 
 		if (gCP == 4)
 		{
 
 			story_be("Story/CH5.txt");
-			gelet = palya_letrehoz(j, 4, 5, gelet, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 		}
 
 		if (gCP == 5)
@@ -474,44 +483,31 @@ void run(int fut)
 		{
 
 			story_be("Story/CH7.txt");
-
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'M');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			delete j;
-			j = nullptr;
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			story_kerdesek("Story/CH7_KERDES1.txt", 1);
 
 			bool tovabb = false;
-			coutszoveg("\nN: a hosszu ejszaka utan ugy dontesz, hogy kell valami fele reggelit szerezni.\nelmesz :\n1. -vadaszni\n2. - horgaszni\n3. - gyujtogetni\n");
 			while (!tovabb)
 			{
 				char el;
 				std::cin >> el;
 				if (el == '1')
 				{
+					story_kerdesek("Story/CH7_KERDES1.txt", 6);
 					char valasztas;
-					coutszoveg("\nN: az erdo surujeben megpillantasz valami fene vadat. Utana futsz ? [I / N]\n");
 					std::cin >> valasztas;
 					if (isalpha(valasztas))
 					{
 						valasztas = tolower(valasztas);
 						if (valasztas == 'i')
 						{
-							coutszoveg("\nN: a felszereleseddel konnyeden elejtetted a vadat, igy meg is van mi lesz a reggeli.\n");
+							story_kerdesek("Story/CH7_KERDES1.txt", 7);
 							spause();
 							tovabb = true;
 						}
 						else
 						{
-							coutszoveg("\nNem sikerult vacsit szerezni, ezert mas modszerhez folyamodsz. (Ird be ujra a kivant szamot!)\n");
+							story_kerdesek("Story/CH7_KERDES1.txt", 8);
 							spause();
 						}
 					}
@@ -572,53 +568,40 @@ void run(int fut)
 
 		if (gCP == 7)
 		{
-			coutszoveg("\nN: Neki is allsz tuzet rakni, hogy elkeszitsd a varva vart reggelidet, de a finom illatra, megjelenik egy medve az erdobol.\n");
+			story_kerdesek("Story/CH7_KERDES1.txt", 1);
 			spause();
 
 			while (gCP == 7)
 			{
 				int eredeti_hp = gelet;
-				j = new jatekmenet(4, 5, gelet, true, 2, 5, 5, nullptr, 1);
-				//j->gyujteni_be(1, 5, 1, 0);
-				j->beolvas(*j, "Text.txt");
-				fin = j->kiir(*j, 'M');
-				if (!fin)
-				{
-					delete j;
-					j = nullptr;
-					exit(0);
-				}
-				int sebzes = j->getBSebzes();
-				gelet = j->getJElet();
-				delete j;
-				j = nullptr;
+				palya_letrehoz(j, 4, 5, &gelet, false, 2, 5, 5, &sebzes, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 
-				coutszoveg("\nN: a medve rad tamad, mit csinalsz ?\n1. - adsz neki a reggelibol\n2. - elugrasz elole, es beledofod a kardodat\n 3. - felmaszol a fara ami alatt sutogettel\n");
+				story_kerdesek("Story/CH7_KERDES1.txt", 3);
 
 				char mit;
 				std::cin >> mit;
 
 				if (mit == '1')
 				{
-					coutszoveg("\nAdtal a medvenek a reggelidbol, az pedig bekesen tovabb al.\n");
+					story_kerdesek("Story/CH7_KERDES1.txt", 7);
 					spause();
 					gCP = 8;
 				}
 
 				else if (mit == '2')
 				{
-					coutszoveg("\nA medve osszerogyik elotted, keves ember mondhatja el ezt magarol\n");
+					story_kerdesek("Story/CH7_KERDES1.txt", 8);
 					spause();
 					gCP = 8;
 				}
 
 				else if (mit == '3')
 				{
-					coutszoveg("\nA medve nagyon jol maszik fara, es lerant az agrol\n");
+					story_kerdesek("Story/CH7_KERDES1.txt", 9);
 					gelet = gelet - sebzes;
 					if (gelet < 0)
 					{
-						std::cout << "MEGHALTAL";
+						story_kerdesek("Story/CH7_KERDES1.txt", 10);
 						spause();
 						gCP = 7;
 						gelet = eredeti_hp;
@@ -631,7 +614,7 @@ void run(int fut)
 				}
 				else
 				{
-					std::cout << "Hibas bemenet!";
+					story_kerdesek("Story/CH7_KERDES1.txt", 11);
 					spause();
 				}
 			}

@@ -1,0 +1,8 @@
+@ N: a hosszu ejszaka utan ugy dontesz, hogy kell valami fele reggelit szerezni.
+@ elmesz :
+@ 1. -vadaszni
+@ 2. - horgaszni
+@ 3. - gyujtogetni #
+@ N: az erdo surujeben megpillantasz valami fene vadat. Utana futsz ? [I / N] #
+@ N: a felszereleseddel konnyeden elejtetted a vadat, igy meg is van mi lesz a reggeli. #
+@ Nem sikerult vacsit szerezni, ezert mas modszerhez folyamodsz. (Ird be ujra a kivant szamot!) #

@@ -1,0 +1,11 @@
+@ N: Neki is allsz tuzet rakni, hogy elkeszitsd a varva vart reggelidet,
+@ de a finom illatra, megjelenik egy medve az erdobol. #
+@ N: a medve rad tamad, mit csinalsz ?
+@ 1. - adsz neki a reggelibol
+@ 2. - elugrasz elole, es beledofod a kardodat
+@ 3. - felmaszol a fara ami alatt sutogettel #
+@ Adtal a medvenek a reggelidbol, az pedig bekesen tovabb all. #
+@ A medve osszerogyik elotted, keves ember mondhatja el ezt magarol. #
+@ A medve nagyon jol maszik fara, es lerant az agrol. #
+@ MEGHALTAL! #
+@ Hibas bemenet! #
