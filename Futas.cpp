@@ -3,7 +3,7 @@
 //jatekmenet konstruktora
 //jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll)
 
-
+//a jatek inditasa
 int kezdes()
 {
 	std::cout << "1. Uj jatek\n2. Mentes folytatasa\n3. Costum palya\n4. Kilepes\nIrd be a megfelelo szamot, vagy szoveget a folytatashoz\n";
@@ -57,13 +57,11 @@ void story_be(std::string CH)
 	//Kepernyo uritese
 	system(CLEAR);
 	std::string egysor;
-
 	std::ifstream f(CH);
 	int karakterek = 0;
 
 	if (f.is_open())
 	{
-		//char skip;
 		using namespace std::chrono_literals;
 		while (std::getline(f, egysor)) {
 			//karakterenkenti kiiras
@@ -89,17 +87,16 @@ void story_be(std::string CH)
 void story_kerdesek(std::string CH, int pos)
 {
 	std::string egysor;
-
 	std::ifstream f(CH);
 	int karakterek = 0;
 
 	if (f.is_open())
 	{
-		//char skip;
+		f.clear();
+		f.seekg(0);
 		using namespace std::chrono_literals;
 		int hanyadik_sor = 0;
 		while (std::getline(f, egysor)) {
-			//karakterenkenti kiiras
 			int karakterek = egysor.length();
 			bool var = false;
 			//sorok szamolasa
@@ -119,7 +116,7 @@ void story_kerdesek(std::string CH, int pos)
 				{
 				std::cout << egysor[i];
 				}
-				//std::this_thread::sleep_for(5ms);
+				std::this_thread::sleep_for(5ms);
 			}
 			if (hanyadik_sor == pos)
 			{
@@ -139,14 +136,53 @@ void story_kerdesek(std::string CH, int pos)
 	}
 }
 
-void coutszoveg(std::string sz)
+void story_kerdesek(std::ifstream& f, int pos)
 {
-	//karakterenkenti kiiras
-	using namespace std::chrono_literals;
-	int karakterek = sz.length();
-	for (int i = 0; i < karakterek; i++) {
-		std::cout << sz[i];
-		//std::this_thread::sleep_for(5ms);
+	std::string egysor;
+	int karakterek = 0;
+
+	if (f.is_open())
+	{
+		f.clear();
+		f.seekg(0);
+		using namespace std::chrono_literals;
+		int hanyadik_sor = 0;
+		while (std::getline(f, egysor)) {
+			int karakterek = egysor.length();
+			bool var = false;
+			//sorok szamolasa
+			if (egysor[0] == '@')
+			{
+				hanyadik_sor++;
+			}
+			//kiiras
+			for (int i = 2; i < karakterek; i++) {
+				// #-nel megall
+				if (egysor[i] == '#' and hanyadik_sor == pos)
+				{
+					var = true;
+				}
+				//@ kiirja a sort
+				if (!var and egysor[0] == '@' and hanyadik_sor == pos)
+				{
+					std::cout << egysor[i];
+				}
+				std::this_thread::sleep_for(5ms);
+			}
+			if (hanyadik_sor == pos)
+			{
+				pos++;
+				std::cout << std::endl;
+			}
+			if (var)
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		std::cerr << "\nNem sikerult a beolvasas\n";
 	}
 }
 
@@ -157,7 +193,7 @@ void palya_letrehoz(jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_
 	int jancsihp = *ghp;
 	//labirintus letrehozasa
 	j = new jatekmenet(jancsiX, jancsiY, jancsihp, van_e_boss, bossX, bossY, seb, palya, mennyi_coll);
-	//gyujtogetni valok letrehozasa, ha van
+	//gyujtogetni valok letrehozasa, ha van (max 3)
 	if (mennyi_coll >= 1)
 	{
 		j->gyujteni_be(coll1X, coll1Y, coll1M, 0);
@@ -204,14 +240,11 @@ void run(int fut)
 		int sebzes = 0;
 		bool helyesbe = false;
 		bool germemutatas = false;
-		bool fin;
 		jatekmenet* j = nullptr;
 
 
 		if (gCP == 0)
 		{
-
-			//CP 0
 			story_be("Story/CH1.txt");
 
 			//kerdes
@@ -298,14 +331,13 @@ void run(int fut)
 					helyesbe = true;
 				}
 				if (!helyesbe) {
-					coutszoveg("\nKovacs: Te fiam, nem latod a kozeteket?\n");
+					story_kerdesek("Story/CH2_KERDES1.txt", 41);
 				}
 			}
 
 			story_be("Story/CH2_2.txt");
 
 			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
-
 
 			story_kerdesek("Story/CH2_KERDES1.txt", 6);
 
@@ -629,12 +661,12 @@ void run(int fut)
 			story_be("Story/CH8.txt");
 			palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'G');
 
-			coutszoveg("\nSzuper, megvan a gomba!\n");
+			story_kerdesek("CH8_KERDES1.txt", 1);
 			spause();
 
 			palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'D');
 
-			coutszoveg("\nEs mostmar a dinnye is!\n");
+			story_kerdesek("CH8_KERDES1.txt", 2);
 			spause();
 
 			gCP = 9;
@@ -642,13 +674,14 @@ void run(int fut)
 
 		if (gCP == 9)
 		{
-			coutszoveg("\nMori: Most, hogy megvannak az alapanyagok, ugy emlekszem eloszor a gombat kell belerakni a forro vizbe es utana a dinnyet.\n");
+			story_kerdesek("Story/CH9_KERDES1.txt", 1);
 			spause();
-
-			coutszoveg("\nN: Mit raksz bele eloszor?\n - gomba\n - dinnye\n");
+			story_kerdesek("Story/CH9_KERDES1.txt", 2);
+			
 			bool tovabb = false;
 			while (!tovabb)
 			{
+				int eredeti_elet = gelet;
 				std::string mit;
 				std::cin >> mit;
 				if (isalpha(mit[0]))
@@ -656,21 +689,21 @@ void run(int fut)
 					mit[0] = tolower(mit[0]);
 					if (mit[0] == 'g')
 					{
-						coutszoveg("\nN: Lefozod a csodaszert, es ugy erzed, ez az ital barmitol meg fog menteni!\n");
+						story_kerdesek("Story/CH9_KERDES1.txt", 5);
 						spause();
 						gelet += 10;
 						tovabb = true;
 					}
 					if (mit[0] == 'd')
 					{
-						coutszoveg("\nN: A fozes rosszul sul el, eltort az uvegcsed es megvagta az ujad\n");
+						story_kerdesek("Story/CH9_KERDES1.txt", 6);
 						gelet -= 2;
 						if (gelet < 0)
 						{
-							std::cout << "MEGHALTAL";
+							story_kerdesek("Story/CH9_KERDES1.txt", 7);
 							spause();
 							gCP = 7;
-							gelet += 2;
+							gelet = eredeti_elet;
 						}
 						else
 						{
@@ -681,7 +714,7 @@ void run(int fut)
 				}
 				else
 				{
-					std::cout << "Hibsa bemenet!";
+					story_kerdesek("Story/CH9_KERDES1.txt", 8);
 				}
 			}
 			gCP = 10;
@@ -689,61 +722,22 @@ void run(int fut)
 
 		if (gCP == 10)
 		{
-			coutszoveg("\nJancsi: elkeszultek a gyogyitalok, mehetunk is tovabb!\nMori: Gyere pattanj fel.\n");
+			story_kerdesek("Story/CH10_KERDES1.txt", 1);
 			spause();
-
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'M');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			delete j;
-			j = nullptr;
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 
 			gCP = 11;
 		}
 
 		if (gCP == 11)
 		{
-			coutszoveg("\nMori: Na es most, hogyan tovabb?\nJancsi: Nezd, ott latok egy csonakot nezzuk meg.\n");
+			story_kerdesek("Story/CH11_KERDES1.txt", 1);
 			spause();
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'M');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			delete j;
-			j = nullptr;
-
-			coutszoveg("\nJancsi: Szuper, nem lyukas es nem tunik ugy mintha elsullyedne\n");
+			story_kerdesek("Story/CH11_KERDES1.txt", 3);
 			spause();
-
-			j = new jatekmenet(4, 5, gelet, false, 0, 0, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'M');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			delete j;
-			j = nullptr;
+			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 
 			gCP = 12;
 		}
@@ -751,22 +745,8 @@ void run(int fut)
 		if (gCP == 12)
 		{
 			story_be("Story/CH12.txt");
-
-			j = new jatekmenet(4, 5, gelet, true, 2, 5, 0, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, ' ');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			delete j;
-			j = nullptr;
-
-			coutszoveg("\nSaccularius: Ki MeReSZeL iDe BeJoNNi!!! aZ eN oTTHoNoMBa!!!\nN: eszreveszi a sarkany a lovag kozeledtet, toppant egy nagyot, a barlang bejarata ele egy nagy szikla leesik.\n");
+			palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' ');
+			story_kerdesek("Story/CH12_KERDES1.txt", 1);
 			spause();
 
 			int sarkany_hp = 3;
@@ -774,44 +754,30 @@ void run(int fut)
 
 			while (sarkany_hp > 0)
 			{
-
-				j = new jatekmenet(4, 5, gelet, true, 2, 5, 0, nullptr, 1);
-				j->gyujteni_be(1, 5, 1, 0);
-				j->beolvas(*j, "Text.txt");
-				fin = j->kiir(*j, ' ');
-				if (!fin)
-				{
-					delete j;
-					j = nullptr;
-					exit(0);
-				}
-				gelet = j->getJElet();
-				delete j;
-				j = nullptr;
+				palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' ');
 
 				if (sarkany_hp == 3)
 				{
-
-					coutszoveg("\nN: a sarkany a karmaival tamad, mit csinalsz?\n1. - elugrasz elole\n2. - vedekezel a kardoddal\n3. - elszaladsz\n4 - alsz egy helybe\n");
+					story_kerdesek("Story/CH12_KERDES1.txt", 4);
 
 					char mit;
 					std::cin >> mit;
 
 					if (mit == '1')
 					{
-						coutszoveg("\nElograsz a tamadas elol!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 9);
 						sarkany_hp -= 1;
 						spause();
 					}
 
 					else if (mit == '2')
 					{
-						coutszoveg("\nMegprobalsz vedekezni a kardoddal, de a sarkany elsopor!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 10);
 						gelet -= 2;
 						spause();
 						if (gelet < 0)
 						{
-							std::cout << "MEGHALTAL";
+							story_kerdesek("Story/CH12_KERDES1.txt", 11);
 							spause();
 							gCP = 12;
 						}
@@ -824,12 +790,12 @@ void run(int fut)
 
 					else if (mit == '3')
 					{
-						coutszoveg("\nA sarkany tud repulni es hamar utol er!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 12);
 						gelet -= 5;
 						spause();
 						if (gelet < 0)
 						{
-							std::cout << "MEGHALTAL";
+							story_kerdesek("Story/CH12_KERDES1.txt", 11);
 							spause();
 							gCP = 12;
 						}
@@ -842,13 +808,13 @@ void run(int fut)
 
 					else if (mit == '4')
 					{
-						coutszoveg("\nA sarkany telibe eltalal!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 13);
 						gelet -= 10;
 						if (gelet < 0)
 						{
-							std::cout << "MEGHALTAL";
+							story_kerdesek("Story/CH12_KERDES1.txt", 11);
 							spause();
-							gCP = 7;
+							gCP = 12;
 						}
 						else
 						{
@@ -858,18 +824,17 @@ void run(int fut)
 					}
 					else
 					{
-						std::cout << "Hibas bemenet!";
+						story_kerdesek("Story/CH12_KERDES1.txt", 14);
 						spause();
 					}
 				}
 
 				else if (sarkany_hp == 2)
 				{
-
-					coutszoveg("\nN: a sarkany tuzet okad, hogy veded ki?\n1. - elbujsz egy szikla moge\n2. - megprobalsz elszaladni elole\n");
+					story_kerdesek("Story/CH12_KERDES1.txt", 15);
 					if (germemutatas)
 					{
-						coutszoveg("3 - hasznalod az ermet \n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 18);
 					}
 
 					char mit;
@@ -877,19 +842,19 @@ void run(int fut)
 
 					if (mit == '1')
 					{
-						coutszoveg("\nElbujsz egy szikla moge, itt a langok nem egetnek meg!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 19);
 						sarkany_hp -= 1;
 						spause();
 					}
 
 					else if (mit == '2')
 					{
-						coutszoveg("\nMegprobalsz elszaladni a sarkany elol, de a langjai megegetnek!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 20);
 						gelet -= 7;
 						spause();
 						if (gelet < 0)
 						{
-							std::cout << "MEGHALTAL";
+							story_kerdesek("Story/CH12_KERDES1.txt", 11);
 							spause();
 							gCP = 12;
 						}
@@ -902,14 +867,14 @@ void run(int fut)
 
 					else if (mit == '3' and germemutatas)
 					{
-						coutszoveg("\nAz erme mukodott! Semmi nyoma a langoknak!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 21);
 						sarkany_hp -= 1;
 						spause();
 					}
 
 					else
 					{
-						std::cout << "Hibas bemenet!";
+						story_kerdesek("Story/CH12_KERDES1.txt", 14);
 						spause();
 					}
 				}
@@ -917,19 +882,19 @@ void run(int fut)
 				else if (sarkany_hp == 1)
 				{
 
-					coutszoveg("\nN: A sarkany megprobal felfalni, mit csinalsz?\n1. - hagyod hogy lenyeljen hatha jol sul el\n2. - megvarod meg eleg kozel er es atszurod a nyakat\n3. - kiszurod az egyik szemet\n4. - megprobalsz elszaladni elole\n");
+					story_kerdesek("Story/CH12_KERDES1.txt", 22);
 
 					char mit;
 					std::cin >> mit;
 
 					if (mit == '1')
 					{
-						coutszoveg("\nNem igazan jol sult el a dolog!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 27);
 						gelet -= 5;
 						spause();
 						if (gelet < 0)
 						{
-							std::cout << "MEGHALTAL";
+							story_kerdesek("Story/CH12_KERDES1.txt", 11);
 							spause();
 							gCP = 12;
 						}
@@ -942,19 +907,19 @@ void run(int fut)
 
 					else if (mit == '2')
 					{
-						coutszoveg("\nTokeletes volt a kardforgatasod! A sarkany osszeomlik elotted!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 28);
 						sarkany_hp -= 1;
 						spause();
 					}
 
 					else if (mit == '3')
 					{
-						coutszoveg("\nEttol csak mergesebb lett! Megprobal a fogaival osszeroppantani!\n");
-						gelet -= ~12;
+						story_kerdesek("Story/CH12_KERDES1.txt", 29);
+						gelet -= 12;
 						spause();
 						if (gelet < 0)
 						{
-							std::cout << "MEGHALTAL";
+							story_kerdesek("Story/CH12_KERDES1.txt", 11);
 							spause();
 							gCP = 12;
 						}
@@ -967,13 +932,13 @@ void run(int fut)
 
 					else if (mit == '4')
 					{
-						coutszoveg("\nMegprobalsz elszaladni elole hatha elfelejti a sarkany ez az egeszet, de siman utol er!\n");
+						story_kerdesek("Story/CH12_KERDES1.txt", 30);
 						gelet -= 10;
 						if (gelet < 0)
 						{
-							std::cout << "MEGHALTAL";
+							story_kerdesek("Story/CH12_KERDES1.txt", 11);
 							spause();
-							gCP = 7;
+							gCP = 12;
 						}
 						else
 						{
@@ -983,14 +948,13 @@ void run(int fut)
 					}
 					else
 					{
-						std::cout << "Hibas bemenet!";
+						story_kerdesek("Story/CH12_KERDES1.txt", 14);
 						spause();
 					}
 				}
 			}
 
-			coutszoveg("\nHercegno: o megmentom, nem hittem volna hogy valaki le tudja gyozni a sarkanyt!\nJancsi: Gyere hercegno, a beszelo lovam es a kiraly mar var!\n");
-			spause();
+			story_be("Story/CH13.txt");
 		}
 	}
 }

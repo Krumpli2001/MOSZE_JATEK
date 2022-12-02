@@ -1,0 +1,30 @@
+@ Saccularius: Ki MeReSZeL iDe BeJoNNi!!! aZ eN oTTHoNoMBa!!!
+@ N: eszreveszi a sarkany a lovag kozeledtet, toppant egy nagyot,
+@ a barlang bejarata ele egy nagy szikla leesik. #
+@ N: a sarkany a karmaival tamad, mit csinalsz?
+@ 1. - elugrasz elole
+@ 2. - vedekezel a kardoddal
+@ 3. - elszaladsz
+@ 4 - alsz egy helybe #
+@ Elograsz a tamadas elol! (Sarkany Elete: 2/3) #
+@ Megprobalsz vedekezni a kardoddal, de a sarkany elsopor! #
+@ MEGHALTAL! #
+@ A sarkany tud repulni es hamar utol er! #
+@ A sarkany telibe eltalal! #
+@ Hibas bemenet! #
+@ N: a sarkany tuzet okad, hogy veded ki?
+@ 1. - elbujsz egy szikla moge
+@ 2. - megprobalsz elszaladni elole #
+@ 3 - hasznalod az ermet #
+@ Elbujsz egy szikla moge, itt a langok nem egetnek meg! (Sarkany Elete: 1/3) #
+@ Megprobalsz elszaladni a sarkany elol, de a langjai megegetnek! #
+@ Az erme mukodott! Semmi nyoma a langoknak! (Sarkany Elete: 1/3) #
+@ N: A sarkany megprobal felfalni, mit csinalsz?
+@ 1. - hagyod hogy lenyeljen hatha jol sul el
+@ 2. - megvarod meg eleg kozel er es atszurod a nyakat
+@ 3. - kiszurod az egyik szemet
+@ 4. - megprobalsz elszaladni elole #
+@ Nem igazan jol sult el a dolog! #
+@ Tokeletes volt a kardforgatasod! A sarkany osszeomlik elotted! #
+@ Ettol csak mergesebb lett! Megprobal a fogaival osszeroppantani! #
+@ Megprobalsz elszaladni elole hatha elfelejti a sarkany ez az egeszet, de siman utol er! #
