@@ -286,7 +286,7 @@ void run(int fut)
 
 			story_be("Story/CH2_1.txt");
 
-			story_kerdesek("Story/CH2_KERDES1.txt", 0);
+			story_kerdesek("Story/CH2_KERDES1.txt", 1);
 			std::string kardszin;
 			bool helyesbe = false;
 			while (!helyesbe)
@@ -419,6 +419,7 @@ void run(int fut)
 
 			story_be("Story/CH3.txt");
 			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			gCP = 3;
 		}
 
 		if (gCP == 3)
@@ -426,6 +427,7 @@ void run(int fut)
 
 			story_be("Story/CH4.txt");
 			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			gCP = 4;
 		}
 
 		if (gCP == 4)
@@ -433,6 +435,7 @@ void run(int fut)
 
 			story_be("Story/CH5.txt");
 			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			gCP = 5;
 		}
 
 		if (gCP == 5)
@@ -508,7 +511,7 @@ void run(int fut)
 						else
 						{
 							story_kerdesek("Story/CH7_KERDES1.txt", 8);
-							spause();
+							story_kerdesek("Story/CH7_KERDES1.txt", 3);
 						}
 					}
 				}
@@ -516,21 +519,22 @@ void run(int fut)
 				else if (el == '2')
 				{
 					char valasztas;
-					coutszoveg("\nN: elmesz egy kozelben csorgedezo patak melle es ugy dontesz, hogy nekiallsz horgaszni.Lassan mar egy oraja itt ucsorogsz de meg nem volt fogas.Folytatod a horgaszast ? [I / N]\n");
+					story_kerdesek("Story/CH7_KERDES1.txt", 9);
 					std::cin >> valasztas;
 					if (isalpha(valasztas))
 					{
 						valasztas = tolower(valasztas);
 						if (valasztas == 'i')
 						{
-							coutszoveg("\nN: Nagyjabol ket perc mulva, meg is hozta turelmed a gyumolcset, igy meg is van mi lesz a reggeli.\n");
+							story_kerdesek("Story/CH7_KERDES1.txt", 11);
 							spause();
 							tovabb = true;
 						}
 						else
 						{
-							coutszoveg("\nNem sikerult vacsit szerezni, ezert mas modszerhez folyamodsz. (Ird be ujra a kivant szamot!)\n");
-							spause();
+							story_kerdesek("Story/CH7_KERDES1.txt", 8);
+							story_kerdesek("Story/CH7_KERDES1.txt", 3);
+
 						}
 					}
 				}
@@ -538,21 +542,21 @@ void run(int fut)
 				else if (el == '3')
 				{
 					char valasztas;
-					coutszoveg("\nN: rengeteg szines bogyot latsz noni az erdoben de egyiket sem ismered.Biztos meg akarod oket kostolni ? [I / N]\n");
+					story_kerdesek("Story/CH7_KERDES1.txt", 12);
 					std::cin >> valasztas;
 					if (isalpha(valasztas))
 					{
 						valasztas = tolower(valasztas);
 						if (valasztas == 'i')
 						{
-							coutszoveg("\nN: Ugy dontesz hogy egy kicsit megperkelet a talalt gyumolcsoket, hatha attol jobb izuk lesz. Szerencsere igazad lett!\n");
+							story_kerdesek("Story/CH7_KERDES1.txt", 13);
 							spause();
 							tovabb = true;
 						}
 						else
 						{
-							coutszoveg("\nNem sikerult vacsit szerezni, ezert mas modszerhez folyamodsz. (Ird be ujra a kivant szamot!)\n");
-							spause();
+							story_kerdesek("Story/CH7_KERDES1.txt", 8);
+							story_kerdesek("Story/CH7_KERDES1.txt", 3);
 						}
 					}
 				}
@@ -568,7 +572,7 @@ void run(int fut)
 
 		if (gCP == 7)
 		{
-			story_kerdesek("Story/CH7_KERDES1.txt", 1);
+			story_kerdesek("Story/CH7_KERDES2.txt", 1);
 			spause();
 
 			while (gCP == 7)
@@ -576,32 +580,32 @@ void run(int fut)
 				int eredeti_hp = gelet;
 				palya_letrehoz(j, 4, 5, &gelet, false, 2, 5, 5, &sebzes, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 
-				story_kerdesek("Story/CH7_KERDES1.txt", 3);
+				story_kerdesek("Story/CH7_KERDES2.txt", 3);
 
 				char mit;
 				std::cin >> mit;
 
 				if (mit == '1')
 				{
-					story_kerdesek("Story/CH7_KERDES1.txt", 7);
+					story_kerdesek("Story/CH7_KERDES2.txt", 7);
 					spause();
 					gCP = 8;
 				}
 
 				else if (mit == '2')
 				{
-					story_kerdesek("Story/CH7_KERDES1.txt", 8);
+					story_kerdesek("Story/CH7_KERDES2.txt", 8);
 					spause();
 					gCP = 8;
 				}
 
 				else if (mit == '3')
 				{
-					story_kerdesek("Story/CH7_KERDES1.txt", 9);
+					story_kerdesek("Story/CH7_KERDES2.txt", 9);
 					gelet = gelet - sebzes;
 					if (gelet < 0)
 					{
-						story_kerdesek("Story/CH7_KERDES1.txt", 10);
+						story_kerdesek("Story/CH7_KERDES2.txt", 10);
 						spause();
 						gCP = 7;
 						gelet = eredeti_hp;
@@ -614,7 +618,7 @@ void run(int fut)
 				}
 				else
 				{
-					story_kerdesek("Story/CH7_KERDES1.txt", 11);
+					story_kerdesek("Story/CH7_KERDES2.txt", 11);
 					spause();
 				}
 			}

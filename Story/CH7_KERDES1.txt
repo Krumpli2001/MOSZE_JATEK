@@ -5,4 +5,9 @@
 @ 3. - gyujtogetni #
 @ N: az erdo surujeben megpillantasz valami fene vadat. Utana futsz ? [I / N] #
 @ N: a felszereleseddel konnyeden elejtetted a vadat, igy meg is van mi lesz a reggeli. #
-@ Nem sikerult vacsit szerezni, ezert mas modszerhez folyamodsz. (Ird be ujra a kivant szamot!) #
+@ N: Nem sikerult vacsit szerezni, ezert mas modszerhez folyamodsz. (Ird be ujra a kivant szamot!) #
+@ N: elmesz egy kozelben csorgedezo patak melle es ugy dontesz, hogy nekiallsz horgaszni.
+@ N: Lassan mar egy oraja itt ucsorogsz de meg nem volt fogas. Folytatod a horgaszast ? [I / N] #
+@ N: Nagyjabol ket perc mulva, meg is hozta turelmed a gyumolcset, igy meg is van mi lesz a reggeli. #
+@ N: Rengeteg szines bogyot latsz noni az erdoben de egyiket sem ismered. Biztos meg akarod oket kostolni ? [I / N] #
+@ N: Ugy dontesz hogy egy kicsit megperkelet a talalt gyumolcsoket, hatha attol jobb izuk lesz. Szerencsere igazad lett! #
