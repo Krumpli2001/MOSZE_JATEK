@@ -156,7 +156,7 @@ void palya_letrehoz(jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_
 	bool fin;
 	int jancsihp = *ghp;
 	//labirintus letrehozasa
-	j = new jatekmenet(4, 5, jancsihp, false, 0, 0, 0, nullptr, 2);
+	j = new jatekmenet(jancsiX, jancsiY, jancsihp, van_e_boss, bossX, bossY, seb, palya, mennyi_coll);
 	//gyujtogetni valok letrehozasa, ha van
 	if (mennyi_coll >= 1)
 	{
@@ -627,37 +627,12 @@ void run(int fut)
 		if (gCP == 8)
 		{
 			story_be("Story/CH8.txt");
-
-			j = new jatekmenet(4, 5, gelet, true, 2, 5, 5, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'G');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			delete j;
-			j = nullptr;
+			palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'G');
 
 			coutszoveg("\nSzuper, megvan a gomba!\n");
 			spause();
 
-			j = new jatekmenet(4, 5, gelet, true, 2, 5, 5, nullptr, 1);
-			j->gyujteni_be(1, 5, 1, 0);
-			j->beolvas(*j, "Text.txt");
-			fin = j->kiir(*j, 'D');
-			if (!fin)
-			{
-				delete j;
-				j = nullptr;
-				exit(0);
-			}
-			gelet = j->getJElet();
-			delete j;
-			j = nullptr;
+			palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'D');
 
 			coutszoveg("\nEs mostmar a dinnye is!\n");
 			spause();
