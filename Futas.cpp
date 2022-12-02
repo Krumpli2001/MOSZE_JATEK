@@ -115,8 +115,8 @@ void story_kerdesek(std::string CH, int pos)
 				if (!var and egysor[0] == '@' and hanyadik_sor == pos)
 				{
 				std::cout << egysor[i];
-				}
 				std::this_thread::sleep_for(5ms);
+				}
 			}
 			if (hanyadik_sor == pos)
 			{
@@ -166,8 +166,8 @@ void story_kerdesek(std::ifstream& f, int pos)
 				if (!var and egysor[0] == '@' and hanyadik_sor == pos)
 				{
 					std::cout << egysor[i];
+					std::this_thread::sleep_for(5ms);
 				}
-				std::this_thread::sleep_for(5ms);
 			}
 			if (hanyadik_sor == pos)
 			{
