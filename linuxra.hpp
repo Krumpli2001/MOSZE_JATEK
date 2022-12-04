@@ -51,10 +51,6 @@ inline void spause()
     int p = getchar();
 }
 
-#include <sys/ioctl.h>
-#include <unistd.h>
-
-
 inline void KursorReset()
 {
     printf("\033[%d;%dH", 0, 0);
