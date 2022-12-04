@@ -1,35 +1,35 @@
 #include "jatekos.hpp"
 
-//jatekos reset
-void jatekos::Reset()
+//Jatekos reset
+void Jatekos::Reset()
 {
     x = eredeti_x;
     y = eredeti_y;
 }
 
-jatekos& jatekos::setElet(int hp)
+Jatekos& Jatekos::setElet(int hp)
 {
     elet = hp;
     return *this;
 }
 
-//jatekos iranyitasa
-void jatekos::MozgasFel()
+//Jatekos iranyitasa
+void Jatekos::MozgasFel()
 {
     y--;
 }
 
-void jatekos::MozgasLe()
+void Jatekos::MozgasLe()
 {
     y++;
 }
 
-void jatekos::MozgasBalra()
+void Jatekos::MozgasBalra()
 {
     x--;
 }
 
-void jatekos::MozgasJobbra()
+void Jatekos::MozgasJobbra()
 {
     x++;
 }

@@ -135,12 +135,12 @@ void story_kerdesek(std::ifstream& f, int pos)
 }
 
 //max 3 coll
-void palya_letrehoz(jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_e_boss, int bossX, int bossY, int seb, int* gsebzes, char** palya, int mennyi_coll, int coll1X, int coll1Y, int coll1M, int coll2X, int coll2Y, int coll2M, int coll3X, int coll3Y, int coll3M, std::string palya_neve, char boss_char)
+void palya_letrehoz(Jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_e_boss, int bossX, int bossY, int seb, int* gsebzes, char** palya, int mennyi_coll, int coll1X, int coll1Y, int coll1M, int coll2X, int coll2Y, int coll2M, int coll3X, int coll3Y, int coll3M, std::string palya_neve, char boss_char)
 {
 	bool fin;
 	int jancsihp = *ghp;
 	//labirintus letrehozasa
-	j = new jatekmenet(jancsiX, jancsiY, jancsihp, van_e_boss, bossX, bossY, seb, palya, mennyi_coll);
+	j = new Jatekmenet(jancsiX, jancsiY, jancsihp, van_e_boss, bossX, bossY, seb, palya, mennyi_coll);
 	//gyujtogetni valok letrehozasa, ha van (max 3)
 	if (mennyi_coll >= 1)
 	{
@@ -188,7 +188,7 @@ void run(int fut)
 		int sebzes = 0;
 		bool helyesbe = false;
 		bool germemutatas = false;
-		jatekmenet* j = nullptr;
+		Jatekmenet* j = nullptr;
 
 
 		if (gCP == 0)

@@ -1,41 +1,41 @@
 #pragma once
 #include "entity.hpp"
 
-class gyujteni : public entity
+class Gyujteni : public Entity
 {
 private:
     int mennyit_ad;
     bool megvolt;
 public:
-    gyujteni() { x = -1; y = -1; mennyit_ad = 0; megvolt = false; }
-    gyujteni(int koordX, int koordY, int ad, bool meg)
+    Gyujteni() { x = -1; y = -1; mennyit_ad = 0; megvolt = false; }
+    Gyujteni(int koordX, int koordY, int ad, bool meg)
     {
         x = koordX;
         y = koordY;
         mennyit_ad = ad;
         megvolt = meg;
     }
-    ~gyujteni() {};
+    ~Gyujteni() {};
 
     int getX() { return x; }
     int getY() { return y; }
-    gyujteni& setX(int sX)
+    Gyujteni& setX(int sX)
     {
         x = sX;
         return *this;
     }
-    gyujteni& setY(int sY)
+    Gyujteni& setY(int sY)
     {
         y = sY;
         return *this;
     }
-    gyujteni& setAD(int A)
+    Gyujteni& setAD(int A)
     {
         mennyit_ad = A;
         return *this;
     }
     
-    gyujteni& setMegvolt(bool m)
+    Gyujteni& setMegvolt(bool m)
     {
         megvolt = m;
         return *this;

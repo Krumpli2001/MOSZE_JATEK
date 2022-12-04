@@ -1,12 +1,12 @@
 #pragma once
 
-class entity
+class Entity
 {
 protected:
     int x, y;
 public:
-    entity() { x = 0; x = 0; }
-    entity(int koordX, int koordY)
+    Entity() { x = 0; x = 0; }
+    Entity(int koordX, int koordY)
     {
         x = koordX;
         y = koordY;
@@ -14,6 +14,5 @@ public:
 
     virtual int getX() = 0;
     virtual int getY() = 0;
-    virtual ~entity() {};
-
+    virtual ~Entity() {};
 };

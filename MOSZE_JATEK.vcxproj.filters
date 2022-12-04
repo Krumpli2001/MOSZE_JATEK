@@ -50,7 +50,7 @@
     <ClInclude Include="linuxra.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Windowsra.hpp">
+    <ClInclude Include="windowsra.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

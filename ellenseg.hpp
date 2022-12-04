@@ -1,18 +1,18 @@
 #pragma once
 #include "entity.hpp"
 
-class ellenseg : public entity
+class Ellenseg : public Entity
 {
 private:
     int sebzes;
 public:
-    ellenseg(int koordX, int koordY, int seb)
+    Ellenseg(int koordX, int koordY, int seb)
     {
         x = koordX;
         y = koordY;
         sebzes = seb;
     }
-    ~ellenseg() {};
+    ~Ellenseg() {};
 
     int getX() { return x; }
     int getY() { return y; }

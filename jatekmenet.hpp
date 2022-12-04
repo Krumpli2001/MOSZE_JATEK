@@ -12,13 +12,13 @@
 
 #ifdef _WIN32
 #define CLEAR "cls"
-#include "Windowsra.hpp"
+#include "windowsra.hpp"
 #else 
 #define CLEAR "clear"
 #include "linuxra.hpp"
 #endif
 
-class jatekmenet
+class Jatekmenet
 {
 private:
     bool kilep;
@@ -27,21 +27,21 @@ private:
     int magassag;
     int szelsseg;
     int coll_mennyiseg;
-    jatekos* jancsi;
-    ellenseg* boss;
-    gyujteni* coll;
+    Jatekos* jancsi;
+    Ellenseg* boss;
+    Gyujteni* coll;
 
 public:
-    jatekmenet() { kilep = false; cp = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
-    jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll)
+    Jatekmenet() { kilep = false; cp = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
+    Jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll)
     {
         //Jancsi letrehozasa
-        jancsi = new jatekos(jancsiX, jancsiY, jancsihp);
+        jancsi = new Jatekos(jancsiX, jancsiY, jancsihp);
 
         //boss letrehozasa
         if (van_e_boss)
         {
-            boss = new ellenseg(bossX, bossY, seb);
+            boss = new Ellenseg(bossX, bossY, seb);
         }
         else
         {
@@ -51,7 +51,7 @@ public:
         //gyujtogethetok letrehozasa
         if (mennyi_coll>0)
         {
-            coll = new gyujteni[mennyi_coll];
+            coll = new Gyujteni[mennyi_coll];
         }
         else
         {
@@ -65,7 +65,7 @@ public:
         szelsseg = 0;
         coll_mennyiseg = mennyi_coll;
     }
-    ~jatekmenet()
+    ~Jatekmenet()
     {
         delete jancsi;
         if (boss) { delete boss; }
@@ -87,18 +87,18 @@ public:
 
     int getBSebzes() { return boss->getSebzes(); }
 
-    jatekmenet& setKilep(bool kilepo);
+    Jatekmenet& setKilep(bool kilepo);
 
-    jatekmenet& setCP(int cpszam);
+    Jatekmenet& setCP(int cpszam);
 
-    void mentes(jatekmenet& jatekosunk);
+    void mentes(Jatekmenet& jatekosunk);
 
     void mentes_be(std::string mentes_neve);
 
-    jatekmenet& beolvas(jatekmenet& j, std::string palyanev);
+    Jatekmenet& beolvas(Jatekmenet& j, std::string palyanev);
 
-    bool lepes(jatekmenet& j);
+    bool lepes(Jatekmenet& j);
 
-    bool kiir(jatekmenet& j, char boss_jele);
+    bool kiir(Jatekmenet& j, char boss_jele);
 
 };

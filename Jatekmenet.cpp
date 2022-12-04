@@ -1,25 +1,25 @@
 #include "jatekmenet.hpp"
 
-jatekmenet& jatekmenet::setCP(int cpszam)
+Jatekmenet& Jatekmenet::setCP(int cpszam)
 {
     cp = cpszam;
     return *this;
 }
 
-jatekmenet& jatekmenet::setKilep(bool kilepo)
+Jatekmenet& Jatekmenet::setKilep(bool kilepo)
 {
     kilep = kilepo;
     return *this;
 }
 
-void jatekmenet::gyujteni_be(int X, int Y, int M, int darab)
+void Jatekmenet::gyujteni_be(int X, int Y, int M, int darab)
 {
     coll[darab].setX(X);
     coll[darab].setY(Y);
     coll[darab].setAD(M);
 }
 
-void jatekmenet::megvan_e(int i)
+void Jatekmenet::megvan_e(int i)
 {
     for (int j = 0; j < i; j++)
     {
@@ -32,7 +32,7 @@ void jatekmenet::megvan_e(int i)
 }
 
 //mentes
-void jatekmenet::mentes(jatekmenet& j)
+void Jatekmenet::mentes(Jatekmenet& j)
 {
     system(CLEAR);
     bool kilep = false;
@@ -89,7 +89,7 @@ void jatekmenet::mentes(jatekmenet& j)
 }
 
 //mentett cp beolvasasa
-void jatekmenet::mentes_be(std::string mentes_neve)
+void Jatekmenet::mentes_be(std::string mentes_neve)
 {
     std::string file_nev;
     std::cin >> file_nev;
@@ -112,7 +112,7 @@ void jatekmenet::mentes_be(std::string mentes_neve)
 }
 
 //palya beolvasasa
-jatekmenet& jatekmenet::beolvas(jatekmenet& j, std::string palyanev)
+Jatekmenet& Jatekmenet::beolvas(Jatekmenet& j, std::string palyanev)
 {
 
     std::string egysor;
@@ -162,7 +162,7 @@ jatekmenet& jatekmenet::beolvas(jatekmenet& j, std::string palyanev)
 }
 
 //OMFG MOZOG!!!
-bool jatekmenet::lepes(jatekmenet& j)
+bool Jatekmenet::lepes(Jatekmenet& j)
 {
 
     int jancsi_X = jancsi->getX();
@@ -220,7 +220,7 @@ bool jatekmenet::lepes(jatekmenet& j)
 }
 
 //palya kirajzolasa
-bool jatekmenet::kiir(jatekmenet& j, char boss_jele)
+bool Jatekmenet::kiir(Jatekmenet& j, char boss_jele)
 {
     system(CLEAR);
     bool leptunk_e;
