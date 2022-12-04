@@ -4,7 +4,6 @@
 class ellenseg : public entity
 {
 private:
-    //int x, y;
     int sebzes;
 public:
     ellenseg(int koordX, int koordY, int seb)

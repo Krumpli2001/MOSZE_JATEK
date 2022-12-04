@@ -6,8 +6,6 @@
 #include <chrono>
 #include <thread>
 
-//#include <stdlib.h>
-
 #include "jatekos.hpp"
 #include "ellenseg.hpp"
 #include "gyujteni.hpp"
@@ -61,9 +59,7 @@ public:
         }
 
         kilep = false;
-
         cp = 0;
-
         palya = nullptr;
         magassag = 0;
         szelsseg = 0;

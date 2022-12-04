@@ -57,5 +57,5 @@ inline void spause()
 
 inline void KursorReset()
 {
-    /* tc_move_cursor(X, Y)  */printf("\033[%d;%dH", 0, 0);
+    printf("\033[%d;%dH", 0, 0);
 }

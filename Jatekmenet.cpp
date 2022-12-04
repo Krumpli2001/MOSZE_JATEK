@@ -214,7 +214,6 @@ bool jatekmenet::lepes(jatekmenet& j)
         if (hit == 'r')
         {
             jancsi->Reset();
-            //boss->Reset();
             return true;
         }
     return false;
@@ -230,18 +229,14 @@ bool jatekmenet::kiir(jatekmenet& j, char boss_jele)
 
     while (!kilep) {
         leptunk_e = false;
-
         if (!elso_kiiras)
         {
             leptunk_e = lepes(j);
         }
-
         if (leptunk_e or elso_kiiras)
         {
             elso_kiiras = false;
-            //system("CLEAR");
             KursorReset();
-
             for (int i = 0; i < j.magassag; i++)
             {
                 for (int j = 0; j < szelsseg; j++)
@@ -282,12 +277,7 @@ bool jatekmenet::kiir(jatekmenet& j, char boss_jele)
                 std::cout << std::endl;
             }
             std::cout << "\nIRANYITAS: WASD, PALYA UJRAKEZDESE: R, KILEPES: Q/ESC\n";
-            int volt_elet = jancsi->getElet();
             std::cout << "Eleteid: " << jancsi->getElet();
-            if (volt_elet < jancsi->getElet())
-            {
-                std::cout << "\nTALALTAL EGY KINCSET, AZ ELETED NAGYOBB LETT " << jancsi->getElet() - volt_elet << "PONTTAL";
-            }
         }
         if((jancsi->getX() == 0) or (jancsi->getX() == (j.szelsseg-1)) or (jancsi->getY() == 0) or (jancsi->getY() == (j.magassag-1)))
         {

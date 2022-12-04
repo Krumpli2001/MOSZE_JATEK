@@ -4,7 +4,6 @@
 class jatekos : public entity
 {
 private:
-    //int x, y;
     int eredeti_x, eredeti_y;
     int elet;
 public:

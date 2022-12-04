@@ -9,7 +9,6 @@ inline void KursorReset()
 	COORD ccoord;
 	ccoord.X = 0;
 	ccoord.Y = 0;
-
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), ccoord);
 }
 

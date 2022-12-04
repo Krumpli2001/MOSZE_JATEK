@@ -4,7 +4,6 @@
 class gyujteni : public entity
 {
 private:
-    //int x, y;
     int mennyit_ad;
     bool megvolt;
 public:
