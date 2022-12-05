@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="ellenseg.hpp" />
     <ClInclude Include="entity.hpp" />
+    <ClInclude Include="global.hpp" />
     <ClInclude Include="gyujteni.hpp" />
     <ClInclude Include="jatekmenet.hpp" />
     <ClInclude Include="jatekos.hpp" />
