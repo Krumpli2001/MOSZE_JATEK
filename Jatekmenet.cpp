@@ -1,11 +1,5 @@
 #include "jatekmenet.hpp"
 
-//Jatekmenet& Jatekmenet::setCP(int cpszam)
-//{
-//    cp = cpszam;
-//    return *this;
-//}
-
 Jatekmenet& Jatekmenet::setKilep(bool kilepo)
 {
     kilep = kilepo;
@@ -30,63 +24,6 @@ void Jatekmenet::megvan_e(int i)
         }
     }
 }
-
-//mentes
-/*void Jatekmenet::mentes(Jatekmenet& j)
-{
-    system(CLEAR);
-    bool kilep = false;
-    bool mentes = false;
-    std::cout << "Biztosan ki szeretnel lepni? [ I / N ]\n";
-    char biztos_k;
-    std::cin >> biztos_k;
-    biztos_k = tolower(biztos_k);
-    if (biztos_k == 'i' or biztos_k == 'y') {
-        std::cout << "Szeretnel menteni? [ I / N ]\n";
-        char biztos_m;
-        std::cin >> biztos_m;
-        biztos_m = tolower(biztos_m);
-        if (biztos_m == 'i' or biztos_m == 'y') {
-
-            std::string file_nev;
-            std::cout << "\nMi legyen a mentesed neve?\n";
-            std::cin >> file_nev;
-            int cpszama;
-            cpszama = getCP();
-            int hpszama;
-            hpszama = j.jancsi->getElet();
-            std::ofstream f(file_nev);
-            if (f.is_open())
-            {
-                f << cpszama << std::endl;
-                f << hpszama << std::endl;
-                f.close();
-                setKilep(true);
-            }
-            else
-            {
-                std::cerr << "\nMENTESI HIBA!\n";
-            }
-        }
-        else if (biztos_m == 'N' or biztos_m == 'n')
-        {
-            std::cout << "\nNem mentettel\n";
-            setKilep(true);
-            spause();
-        }
-    }
-    else if (biztos_k == 'n' or biztos_k == 'N')
-    {
-        std::cout << "\nNem leptel ki\n";
-        spause();
-    }
-    else
-    {
-        std::cout << "\nHibas valasz\n";
-        spause();
-    }
-
-}*/
 
 //mentett cp beolvasasa
 /*void Jatekmenet::mentes_be(std::string mentes_neve)
@@ -208,7 +145,6 @@ bool Jatekmenet::lepes(Jatekmenet& j)
         }
         if (hit == 27 or hit == 'q')
         {
-            //mentes(j);
             setKilep(true);
             return true;
         }

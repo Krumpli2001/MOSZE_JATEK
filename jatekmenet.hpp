@@ -81,15 +81,11 @@ public:
 
     void megvan_e(int i);
 
-    //int getCP() { return cp; }
-
     int getJElet() { return jancsi->getElet(); }
 
     int getBSebzes() { return boss->getSebzes(); }
 
     Jatekmenet& setKilep(bool kilepo);
-
-    //Jatekmenet& setCP(int cpszam);
 
     //void mentes(Jatekmenet& jatekosunk);
 

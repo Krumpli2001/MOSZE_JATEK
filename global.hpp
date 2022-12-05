@@ -67,4 +67,7 @@ public:
 		gErmemutatas = e;
 		return *this;
 	}
+
+bool mentes(Global* g);
+void mentes_be(std::string mentes_neve);
 };
