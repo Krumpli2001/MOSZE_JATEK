@@ -135,7 +135,7 @@ void story_kerdesek(std::ifstream& f, int pos)
 }
 
 //max 3 coll
-void palya_letrehoz(Jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_e_boss, int bossX, int bossY, int seb, int* gsebzes, char** palya, int mennyi_coll, int coll1X, int coll1Y, int coll1M, int coll2X, int coll2Y, int coll2M, int coll3X, int coll3Y, int coll3M, std::string palya_neve, char boss_char)
+bool palya_letrehoz(Jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_e_boss, int bossX, int bossY, int seb, int* gsebzes, char** palya, int mennyi_coll, int coll1X, int coll1Y, int coll1M, int coll2X, int coll2Y, int coll2M, int coll3X, int coll3Y, int coll3M, std::string palya_neve, char boss_char)
 {
 	bool fin;
 	int jancsihp = *ghp;
@@ -163,8 +163,9 @@ void palya_letrehoz(Jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_
 	{
 		delete j;
 		j = nullptr;
-		exit(0);
 	}
+	if(fin)
+	{
 	//player elet kiirasa
 	int gelet = j->getJElet();
 	*ghp = gelet;
@@ -175,8 +176,26 @@ void palya_letrehoz(Jatekmenet* j, int jancsiX, int jancsiY, int* ghp, bool van_
 	*gsebzes = sebzes;
 	}
 	//labirintus torlese
-	delete j;
-	j = nullptr;
+		delete j;
+		j = nullptr;
+	}
+	return fin;
+}
+
+//kilepes, ha van kerdes
+void kilep(bool fin, std::ifstream& f)
+{
+	if(!fin)
+	{		
+		if(f){f.close();}
+		exit(0);
+	}
+}
+
+void kilep(bool fin)
+{
+	if(!fin)
+	{exit(0);}
 }
 
 void run(int fut)
@@ -186,8 +205,9 @@ void run(int fut)
 		int gelet = 3;
 		int gCP = 0;
 		int sebzes = 0;
+		bool fin;
 		bool helyesbe = false;
-		bool germemutatas = false;
+		bool gErmemutatas = false;
 		Jatekmenet* j = nullptr;
 
 
@@ -228,7 +248,8 @@ void run(int fut)
 				}
 			}
 
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 2, 1, 5, 1, 2, 5, 2, 0, 0, 0, "Text.txt", 'M');
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 2, 1, 5, 1, 2, 5, 2, 0, 0, 0, "Text.txt", 'M');
+			kilep(fin, f);
 
 			//kerdesre valasz
 			story_kerdesek(f, 7);
@@ -258,7 +279,9 @@ void run(int fut)
 				//felteteles labirintus
 				story_kerdesek(f, 14);
 				spause();
-				palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+				fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+				kilep(fin, f);
+
 			}
 			f.close();
 			gCP = 1;
@@ -288,7 +311,9 @@ void run(int fut)
 
 			story_be("Story/CH2_2.txt");
 
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			kilep(fin, f);
+
 
 			story_kerdesek(f, 6);
 
@@ -321,7 +346,7 @@ void run(int fut)
 			if (ermemutatas[0] == 'i')
 			{
 				story_kerdesek(f, 19);
-				germemutatas = true;
+				gErmemutatas = true;
 			}
 			if (ajtobe == '3')
 			{
@@ -402,7 +427,8 @@ void run(int fut)
 		{
 
 			story_be("Story/CH3.txt");
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			kilep(fin);
 			gCP = 3;
 		}
 
@@ -410,7 +436,8 @@ void run(int fut)
 		{
 
 			story_be("Story/CH4.txt");
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			kilep(fin);
 			gCP = 4;
 		}
 
@@ -418,7 +445,8 @@ void run(int fut)
 		{
 
 			story_be("Story/CH5.txt");
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			kilep(fin);
 			gCP = 5;
 		}
 
@@ -472,8 +500,9 @@ void run(int fut)
 		{
 
 			story_be("Story/CH7.txt");
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
 			std::ifstream f("Story/CH7_KERDES1.txt");
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			kilep(fin, f);
 			story_kerdesek(f, 1);
 
 			bool tovabb = false;
@@ -567,8 +596,8 @@ void run(int fut)
 			while (gCP == 7)
 			{
 				int eredeti_hp = gelet;
-				palya_letrehoz(j, 4, 5, &gelet, false, 2, 5, 5, &sebzes, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
-
+				fin = palya_letrehoz(j, 4, 5, &gelet, false, 2, 5, 5, &sebzes, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+				kilep(fin, f);
 				story_kerdesek(f, 3);
 
 				char mit;
@@ -617,14 +646,15 @@ void run(int fut)
 		if (gCP == 8)
 		{
 			story_be("Story/CH8.txt");
-			palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'G');
-
 			std::ifstream f("Story/CH8_KERDES1.txt");
+			fin = palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'G');
+			kilep(fin, f);
+
 			story_kerdesek(f, 1);
 			spause();
 
-			palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'D');
-
+			fin = palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'D');
+			kilep(fin, f);
 			story_kerdesek(f, 2);
 			spause();
 
@@ -688,8 +718,8 @@ void run(int fut)
 			story_kerdesek(f, 1);
 			f.close();
 			spause();
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
-
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			kilep(fin, f);
 			gCP = 11;
 		}
 
@@ -698,11 +728,14 @@ void run(int fut)
 			std::ifstream f("Story/CH11_KERDES1.txt");
 			story_kerdesek(f, 1);
 			spause();
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			kilep(fin, f);
 
 			story_kerdesek(f, 3);
 			spause();
-			palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');
+			fin = palya_letrehoz(j, 4, 5, &gelet, false, 0, 0, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M');	
+			kilep(fin, f);
+
 
 			f.close();
 			gCP = 12;
@@ -711,8 +744,10 @@ void run(int fut)
 		if (gCP == 12)
 		{
 			story_be("Story/CH12.txt");
-			palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' ');
 			std::ifstream f("Story/CH12_KERDES1.txt");
+			fin = palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' ');
+			kilep(fin, f);
+
 			story_kerdesek(f, 1);
 			spause();
 
@@ -721,10 +756,11 @@ void run(int fut)
 
 			while (sarkany_hp > 0)
 			{
-				palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' ');
-
 				if (sarkany_hp == 3)
 				{
+					fin = palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' ');
+					kilep(fin, f);
+
 					story_kerdesek(f, 4);
 
 					char mit;
@@ -798,8 +834,11 @@ void run(int fut)
 
 				else if (sarkany_hp == 2)
 				{
+					fin = palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' ');
+					kilep(fin, f);
+
 					story_kerdesek(f, 15);
-					if (germemutatas)
+					if (gErmemutatas)
 					{
 						story_kerdesek(f, 18);
 					}
@@ -832,7 +871,7 @@ void run(int fut)
 						}
 					}
 
-					else if (mit == '3' and germemutatas)
+					else if (mit == '3' and gErmemutatas)
 					{
 						story_kerdesek(f, 21);
 						sarkany_hp -= 1;
@@ -848,6 +887,8 @@ void run(int fut)
 
 				else if (sarkany_hp == 1)
 				{
+					fin = palya_letrehoz(j, 4, 5, &gelet, true, 2, 5, 0, nullptr, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' ');
+					kilep(fin, f);
 
 					story_kerdesek(f, 22);
 
