@@ -576,7 +576,6 @@ void run(int fut)
 						}
 					}
 				}
-
 				else
 				{
 					std::cout << "Hibas bemenet!";

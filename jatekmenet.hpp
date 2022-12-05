@@ -22,7 +22,7 @@ class Jatekmenet
 {
 private:
     bool kilep;
-    int cp;
+    //int cp;
     char** palya;
     int magassag;
     int szelsseg;
@@ -32,7 +32,7 @@ private:
     Gyujteni* coll;
 
 public:
-    Jatekmenet() { kilep = false; cp = 0; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
+    Jatekmenet() { kilep = false; /*cp = 0;*/ palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
     Jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll)
     {
         //Jancsi letrehozasa
@@ -59,7 +59,7 @@ public:
         }
 
         kilep = false;
-        cp = 0;
+        //cp = 0;
         palya = nullptr;
         magassag = 0;
         szelsseg = 0;
@@ -81,7 +81,7 @@ public:
 
     void megvan_e(int i);
 
-    int getCP() { return cp; }
+    //int getCP() { return cp; }
 
     int getJElet() { return jancsi->getElet(); }
 
@@ -89,11 +89,11 @@ public:
 
     Jatekmenet& setKilep(bool kilepo);
 
-    Jatekmenet& setCP(int cpszam);
+    //Jatekmenet& setCP(int cpszam);
 
-    void mentes(Jatekmenet& jatekosunk);
+    //void mentes(Jatekmenet& jatekosunk);
 
-    void mentes_be(std::string mentes_neve);
+    //void mentes_be(std::string mentes_neve);
 
     Jatekmenet& beolvas(Jatekmenet& j, std::string palyanev);
 

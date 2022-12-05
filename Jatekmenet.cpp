@@ -1,10 +1,10 @@
 #include "jatekmenet.hpp"
 
-Jatekmenet& Jatekmenet::setCP(int cpszam)
-{
-    cp = cpszam;
-    return *this;
-}
+//Jatekmenet& Jatekmenet::setCP(int cpszam)
+//{
+//    cp = cpszam;
+//    return *this;
+//}
 
 Jatekmenet& Jatekmenet::setKilep(bool kilepo)
 {
@@ -32,7 +32,7 @@ void Jatekmenet::megvan_e(int i)
 }
 
 //mentes
-void Jatekmenet::mentes(Jatekmenet& j)
+/*void Jatekmenet::mentes(Jatekmenet& j)
 {
     system(CLEAR);
     bool kilep = false;
@@ -86,10 +86,10 @@ void Jatekmenet::mentes(Jatekmenet& j)
         spause();
     }
 
-}
+}*/
 
 //mentett cp beolvasasa
-void Jatekmenet::mentes_be(std::string mentes_neve)
+/*void Jatekmenet::mentes_be(std::string mentes_neve)
 {
     std::string file_nev;
     std::cin >> file_nev;
@@ -109,7 +109,7 @@ void Jatekmenet::mentes_be(std::string mentes_neve)
     {
         std::cerr << "\nNEM SIKERULT BETOLTENI A MENTEST\n";
     }
-}
+}*/
 
 //palya beolvasasa
 Jatekmenet& Jatekmenet::beolvas(Jatekmenet& j, std::string palyanev)
@@ -208,7 +208,8 @@ bool Jatekmenet::lepes(Jatekmenet& j)
         }
         if (hit == 27 or hit == 'q')
         {
-            mentes(j);
+            //mentes(j);
+            setKilep(true);
             return true;
         }
         if (hit == 'r')
