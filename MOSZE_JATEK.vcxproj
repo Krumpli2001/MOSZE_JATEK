@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Global.cpp" />
     <ClCompile Include="Jatekmenet.cpp" />
     <ClCompile Include="Jatekos.cpp" />
     <ClCompile Include="MOSZE_JATEK.cpp" />
