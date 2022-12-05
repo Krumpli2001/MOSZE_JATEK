@@ -99,19 +99,16 @@ void story_kerdesek(std::ifstream& f, int pos)
 			int karakterek = egysor.length();
 			bool var = false;
 			//sorok szamolasa
-			if (egysor[0] == '@')
-			{
-				hanyadik_sor++;
-			}
+			hanyadik_sor++;
 			//kiiras
-			for (int i = 2; i < karakterek; i++) {
+			for (int i = 0; i < karakterek; i++) {
 				// #-nel megall
 				if (egysor[i] == '#' and hanyadik_sor == pos)
 				{
 					var = true;
 				}
 				//@ kiirja a sort
-				if (!var and egysor[0] == '@' and hanyadik_sor == pos)
+				if (!var and hanyadik_sor == pos)
 				{
 					std::cout << egysor[i];
 					std::this_thread::sleep_for(5ms);
@@ -188,10 +185,14 @@ void kilep(Global* g, bool fin, std::ifstream& f)
 {
 	if(!fin)
 	{		
+		bool kilep = g->mentes();
+		if(kilep)
+		{
 		if (f) { f.close(); }
 		if (g) { delete g; }
 		g = nullptr;
 		exit(0);
+		}
 	}
 }
 
@@ -199,9 +200,13 @@ void kilep(Global* g, bool fin)
 {
 	if(!fin)
 	{
+		bool kilep = g->mentes();
+		if(kilep)
+		{
 		if (g) { delete g; }
 		g = nullptr;
 		exit(0);
+		}
 	}
 }
 

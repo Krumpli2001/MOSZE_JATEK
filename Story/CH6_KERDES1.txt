@@ -1,8 +1,7 @@
-@ N: Maradsz ejszakara [ I / N ] #
-@ Hibas bemenet! #
-@ N: Meg kellett volna fogadni a mano tanacsat,
-@ miutan lehunytad a szemed, tobbet mar soha nem nyitottad ki ujra
-@
-@
-@
-@ MEGHALTAL!#
+N: Maradsz ejszakara [ I / N ] #
+Hibas bemenet! #
+N: Meg kellett volna fogadni a mano tanacsat,
+miutan lehunytad a szemed, tobbet mar soha nem nyitottad ki ujra
+
+
+MEGHALTAL!#

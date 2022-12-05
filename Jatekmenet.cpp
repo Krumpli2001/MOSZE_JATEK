@@ -25,29 +25,6 @@ void Jatekmenet::megvan_e(int i)
     }
 }
 
-//mentett cp beolvasasa
-/*void Jatekmenet::mentes_be(std::string mentes_neve)
-{
-    std::string file_nev;
-    std::cin >> file_nev;
-    std::ifstream f(file_nev);
-    if (f.is_open())
-    {
-        std::string* data = new std::string[2];
-        for (int i = 0; i < 2; i++)
-        {
-            std::getline(f, data[i]);
-        }
-        setCP(stoi(data[0]));
-        jancsi->setElet(stoi(data[1]));
-        f.close();
-    }
-    else
-    {
-        std::cerr << "\nNEM SIKERULT BETOLTENI A MENTEST\n";
-    }
-}*/
-
 //palya beolvasasa
 Jatekmenet& Jatekmenet::beolvas(Jatekmenet& j, std::string palyanev)
 {

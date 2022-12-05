@@ -1,6 +1,6 @@
 #include "global.hpp"
 
-bool Global::mentes(Global* g)
+bool Global::mentes()
 {
     system(CLEAR);
     bool kilep = false;
@@ -22,9 +22,9 @@ bool Global::mentes(Global* g)
             std::ofstream f(file_nev);
             if (f.is_open())
             {
-                f << g->getgCP() << std::endl;
-                f << g->getgElet() << std::endl;
-                f << g->getgErmemutatas() << std::endl;
+                f << this->getgCP()<< std::endl;
+                f << this->getgElet() << std::endl;
+                f << this->getgErmemutatas() << std::endl;
                 f.close();
                 return true;
             }
@@ -51,6 +51,32 @@ bool Global::mentes(Global* g)
     {
         std::cout << "\nHibas valasz\n";
         spause();
+        return false;
+    }
+    return false;
+}
+
+void Global::mentes_be(std::string mentes_neve)
+{
+
+    std::string file_nev;
+    std::cin >> file_nev;
+    std::ifstream f(file_nev);
+    if (f.is_open())
+    {
+        std::string data[3];
+        for (int i = 0; i < 3; i++)
+        {
+            std::getline(f, data[i]);
+        }
+        this->setgCP(stoi(data[0]));
+        this->setgElet(stoi(data[1]));
+        this->setgErmemutatas(stoi(data[2]));
+        f.close();
+    }
+    else
+    {
+        std::cerr << "\nNEM SIKERULT BETOLTENI A MENTEST\n";
     }
 
 }

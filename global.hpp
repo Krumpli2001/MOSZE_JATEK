@@ -68,6 +68,6 @@ public:
 		return *this;
 	}
 
-bool mentes(Global* g);
+bool mentes();
 void mentes_be(std::string mentes_neve);
 };

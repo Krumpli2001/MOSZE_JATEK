@@ -1,8 +1,8 @@
-@ Mori: Most, hogy megvannak az alapanyagok, ugy emlekszem eloszor a gombat kell belerakni a forro vizbe es utana a dinnyet. #
-@ N: Mit raksz bele eloszor?
-@ - gomba
-@ - dinnye #
-@ N: Lefozod a csodaszert, es ugy erzed, ez az ital barmitol meg fog menteni! (Kaptal 10 eletet!) #
-@ N: A fozes rosszul sul el, eltort az uvegcsed es megvagta az ujad (Vesztettel 2 eletet) #
-@ MEGHALTAL! #
-@ Hibsa bemenet! #
+Mori: Most, hogy megvannak az alapanyagok, ugy emlekszem eloszor a gombat kell belerakni a forro vizbe es utana a dinnyet. #
+N: Mit raksz bele eloszor?
+- gomba
+- dinnye #
+N: Lefozod a csodaszert, es ugy erzed, ez az ital barmitol meg fog menteni! (Kaptal 10 eletet!) #
+N: A fozes rosszul sul el, eltort az uvegcsed es megvagta az ujad (Vesztettel 2 eletet) #
+MEGHALTAL! #
+Hibsa bemenet! #
