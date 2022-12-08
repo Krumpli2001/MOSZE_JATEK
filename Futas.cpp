@@ -51,6 +51,7 @@ int kezdes()
 	return -1;
 }
 
+//fut returned 3
 void costum_palya()
 {
 	int J_X, J_Y;
@@ -61,6 +62,10 @@ void costum_palya()
 	//do, while valamiert csak most jutott egyembe h igy is lehetett volna... - 2022.12.08. 23:24
 	do {
 		std::cin >> veg;
+		if (veg != '1' and veg != '2')
+		{
+			std::cout << "Hibas bemenet!";
+		}
 	} while (veg != '1' and veg != '2');
 	bool van_e_boss = false;
 	int B_X = 0, B_Y = 0;
@@ -208,16 +213,10 @@ bool palya_letrehoz(Global* g, int jancsiX, int jancsiY, bool van_e_boss, int bo
 	}
 	if(g->getFin())
 	{
-	//player elet kiirasa
 	g->setgElet(g->jatekter->getJElet());
-	//int gelet = j->getelet();
-	//*ghp = gelet;
-	//sebzes kiirasa
 	if (seb > 0)
 	{
 		g->setSebzes(g->jatekter->getBSebzes());
-	/*int sebzes = j->getBSebzes();
-	*gsebzes = sebzes;*/
 	}
 	//labirintus torlese
 		delete g->jatekter;
