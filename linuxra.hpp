@@ -3,6 +3,10 @@
 #include <termios.h>
 #include <stdio.h>
 
+#define CLEAR "clear"
+#define STORYL "Story"
+#define PALYAKL "palyak"
+
 static struct termios eredeti, jelenlegi;
 
 // uj terminal beallitasok
@@ -10,7 +14,7 @@ inline void initTermios(int echo)
 {
     tcgetattr(0, &eredeti); // eredeti terminal beallitasok
     jelenlegi = eredeti;
-    jelenlegi.c_lflag &= ~ICANON; // buffered "tiltasa"
+    jelenlegi.c_lflag &= ~ICANON; // buffer "tiltasa"
     if (echo) {
         jelenlegi.c_lflag |= ECHO; // van echo
     }
@@ -46,11 +50,13 @@ inline char getche(void)
     return getch_(1);
 }
 
+//pause
 inline void spause()
 {
     int p = getchar();
 }
 
+//kursor visszaallitasa
 inline void KursorReset()
 {
     printf("\033[%d;%dH", 0, 0);

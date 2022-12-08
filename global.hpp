@@ -4,14 +4,17 @@
 class Global
 {
 private:
-	int gElet = 3;
-	int gCP = 0;
-	int sebzes = 0;
+	int gElet;
+	int gCP;
+	int sebzes;
 	bool fin;
-	bool helyesbe = false;
-	bool gErmemutatas = false;
+	bool helyesbe;
+	bool gErmemutatas;
 public:
+	Global() { gElet = 3; gCP = 0; sebzes = 0; fin = false; helyesbe = false; gErmemutatas = false; }
+
 	Jatekmenet* jatekter = nullptr;
+	
 	int getgElet()
 	{
 		return gElet;
@@ -69,5 +72,5 @@ public:
 	}
 
 bool mentes();
-void mentes_be(std::string mentes_neve);
+void mentes_be();
 };

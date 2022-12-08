@@ -68,7 +68,7 @@ void story_be(std::string CH)
 			int karakterek = egysor.length();
 			for (int i = 0; i < karakterek; i++) {
 				std::cout << egysor[i];
-				//std::this_thread::sleep_for(5ms);
+				std::this_thread::sleep_for(5ms);
 			}
 			std::cout << std::endl;
 		}
@@ -107,7 +107,7 @@ void story_kerdesek(std::ifstream& f, int pos)
 				{
 					var = true;
 				}
-				//@ kiirja a sort
+				//kiirja a sort
 				if (!var and hanyadik_sor == pos)
 				{
 					std::cout << egysor[i];
@@ -216,12 +216,17 @@ void run(int fut)
 	{
 		Global* global_valtozok = new Global;
 
+		if (fut == 2)
+		{
+			global_valtozok->mentes_be();
+		}
+
 		if (global_valtozok->getgCP() == 0)
 		{
-			story_be("Story/CH1.txt");
+			story_be(STORYL"/CH1.txt");
 
 			//kerdes
-			std::ifstream f("Story/CH1_KERDES1.txt");
+			std::ifstream f(STORYL"/CH1_KERDES1.txt");
 			story_kerdesek(f, 1);
 			char elsovetel;
 			char masodikvetel;
@@ -254,7 +259,7 @@ void run(int fut)
 			}
 
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 2, 1, 5, 1, 2, 5, 2, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 2, 1, 5, 1, 2, 5, 2, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
 
@@ -274,7 +279,7 @@ void run(int fut)
 			}
 			spause();
 
-			//kerdesre valasz
+			//kerdesre valasz 2
 			story_kerdesek(f, 12);
 			if (elsovetel == '2' or masodikvetel == '2')
 			{
@@ -283,11 +288,11 @@ void run(int fut)
 			}
 			else
 			{
-				//felteteles labirintus
+				//felteteles labirintus, (ez a futasba az utolso erdemelges komment, igy fognak lefolyni a CHapter-ek)
 				story_kerdesek(f, 14);
 				spause();
 				do{
-				global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+				global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 				kilep(global_valtozok, global_valtozok->getFin(), f);
 				}while(!global_valtozok->getFin());
 
@@ -299,9 +304,9 @@ void run(int fut)
 		if (global_valtozok->getgCP() == 1)
 		{
 
-			story_be("Story/CH2_1.txt");
+			story_be(STORYL"/CH2_1.txt");
 
-			std::ifstream f("Story/CH2_KERDES1.txt");
+			std::ifstream f(STORYL"/CH2_KERDES1.txt");
 			story_kerdesek(f, 1);
 			std::string kardszin;
 			bool helyesbe = false;
@@ -318,13 +323,12 @@ void run(int fut)
 				}
 			}
 
-			story_be("Story/CH2_2.txt");
+			story_be(STORYL"/CH2_2.txt");
 
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
-
 
 			story_kerdesek(f, 6);
 
@@ -437,9 +441,9 @@ void run(int fut)
 		if (global_valtozok->getgCP() == 2)
 		{
 
-			story_be("Story/CH3.txt");
+			story_be(STORYL"/CH3.txt");
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getgCP());
 			}while(!global_valtozok->getFin());
 			global_valtozok->setgCP(3);
@@ -448,9 +452,9 @@ void run(int fut)
 		if (global_valtozok->getgCP() == 3)
 		{
 
-			story_be("Story/CH4.txt");
+			story_be(STORYL"/CH4.txt");
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getFin());
 			}while(!global_valtozok->getFin());
 			global_valtozok->setgCP(4);
@@ -459,9 +463,9 @@ void run(int fut)
 		if (global_valtozok->getgCP() == 4)
 		{
 
-			story_be("Story/CH5.txt");
+			story_be(STORYL"/CH5.txt");
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getFin());
 			}while(!global_valtozok->getFin());
 			global_valtozok->setgCP(5);
@@ -470,11 +474,11 @@ void run(int fut)
 		if (global_valtozok->getgCP() == 5)
 		{
 
-			story_be("Story/CH6.txt");
+			story_be(STORYL"/CH6.txt");
 
 			while (global_valtozok->getgCP() == 5)
 			{
-				std::ifstream f("Story/CH6_KERDES1.txt");
+				std::ifstream f(STORYL"/CH6_KERDES1.txt");
 				story_kerdesek(f, 1);
 				bool helyesbe = false;
 				bool ded = false;
@@ -515,10 +519,10 @@ void run(int fut)
 		if (global_valtozok->getgCP() == 6)
 		{
 
-			story_be("Story/CH7.txt");
-			std::ifstream f("Story/CH7_KERDES1.txt");
+			story_be(STORYL"/CH7.txt");
+			std::ifstream f(STORYL"/CH7_KERDES1.txt");
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
 			story_kerdesek(f, 1);
@@ -606,7 +610,7 @@ void run(int fut)
 
 		if (global_valtozok->getgCP() == 7)
 		{
-			std::ifstream f("Story/CH7_KERDES2.txt");
+			std::ifstream f(STORYL"/CH7_KERDES2.txt");
 			story_kerdesek(f, 1);
 			spause();
 
@@ -614,7 +618,7 @@ void run(int fut)
 			{
 				int eredeti_hp = global_valtozok->getgElet();
 				do{
-				global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 5, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+				global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 5, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 				kilep(global_valtozok, global_valtozok->getFin(), f);
 				}while(!global_valtozok->getFin());
 				story_kerdesek(f, 3);
@@ -663,10 +667,10 @@ void run(int fut)
 
 		if (global_valtozok->getgCP() == 8)
 		{
-			story_be("Story/CH8.txt");
-			std::ifstream f("Story/CH8_KERDES1.txt");
+			story_be(STORYL"/CH8.txt");
+			std::ifstream f(STORYL"/CH8_KERDES1.txt");
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'G'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'G'));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
 
@@ -674,7 +678,7 @@ void run(int fut)
 			spause();
 
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'D'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'D'));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
 			story_kerdesek(f, 2);
@@ -686,7 +690,7 @@ void run(int fut)
 
 		if (global_valtozok->getgCP() == 9)
 		{
-			std::ifstream f("Story/CH9_KERDES1.txt");
+			std::ifstream f(STORYL"/CH9_KERDES1.txt");
 			story_kerdesek(f, 1);
 			spause();
 			story_kerdesek(f, 2);
@@ -735,12 +739,12 @@ void run(int fut)
 
 		if (global_valtozok->getgCP() == 10)
 		{
-			std::ifstream f("Story/CH10_KERDES1.txt");
+			std::ifstream f(STORYL"/CH10_KERDES1.txt");
 			story_kerdesek(f, 1);
 			f.close();
 			spause();
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
 			global_valtozok->setgCP(11);
@@ -748,18 +752,18 @@ void run(int fut)
 
 		if (global_valtozok->getgCP() == 11)
 		{
-			std::ifstream f("Story/CH11_KERDES1.txt");
+			std::ifstream f(STORYL"/CH11_KERDES1.txt");
 			story_kerdesek(f, 1);
 			spause();
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
 
 			story_kerdesek(f, 3);
 			spause();
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", 'M'));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, false, 0, 0, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", 'M'));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
 
@@ -769,10 +773,10 @@ void run(int fut)
 
 		if (global_valtozok->getgCP() == 12)
 		{
-			story_be("Story/CH12.txt");
-			std::ifstream f("Story/CH12_KERDES1.txt");
+			story_be(STORYL"/CH12.txt");
+			std::ifstream f(STORYL"/CH12_KERDES1.txt");
 			do{
-			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' '));
+			global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", ' '));
 			kilep(global_valtozok, global_valtozok->getFin(), f);
 			}while(!global_valtozok->getFin());
 
@@ -787,7 +791,7 @@ void run(int fut)
 				if (sarkany_hp == 3)
 				{
 					do{
-					global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' '));
+					global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", ' '));
 					kilep(global_valtozok, global_valtozok->getFin(), f);
 					}while(!global_valtozok->getFin());
 
@@ -862,7 +866,7 @@ void run(int fut)
 				else if (sarkany_hp == 2)
 				{
 					do{
-					global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' '));
+					global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", ' '));
 					kilep(global_valtozok, global_valtozok->getFin(), f);
 					}while(!global_valtozok->getFin());
 
@@ -916,7 +920,7 @@ void run(int fut)
 				else if (sarkany_hp == 1)
 				{
 					do{
-					global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, "Text.txt", ' '));
+					global_valtozok->setFin(palya_letrehoz(global_valtozok, 4, 5, true, 2, 5, 0, nullptr, 1, 1, 5, 1, 0, 0, 0, 0, 0, 0, PALYAKL"/Text.txt", ' '));
 					kilep(global_valtozok, global_valtozok->getFin(), f);
 					}while(!global_valtozok->getFin());
 
@@ -989,7 +993,7 @@ void run(int fut)
 				}
 			}
 			f.close();
-			story_be("Story/CH13.txt");
+			story_be(STORYL"/CH13.txt");
 		}
 	}
 }

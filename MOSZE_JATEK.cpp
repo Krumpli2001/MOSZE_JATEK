@@ -1,5 +1,4 @@
-// MOSZE_JATEK.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// MOSZE_JATEK.cpp : This file contains the 'main' function.
 
 #include "futas.hpp"
 

@@ -56,9 +56,9 @@ bool Global::mentes()
     return false;
 }
 
-void Global::mentes_be(std::string mentes_neve)
+void Global::mentes_be()
 {
-
+    std::cout << "Ird be a mentesed nevet! (Ennek a fajlnak elvileg ugyan abban a mappaban kene lennie ahol a jatek van)\n";
     std::string file_nev;
     std::cin >> file_nev;
     std::ifstream f(file_nev);

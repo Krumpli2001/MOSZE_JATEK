@@ -11,10 +11,8 @@
 #include "gyujteni.hpp"
 
 #ifdef _WIN32
-#define CLEAR "cls"
 #include "windowsra.hpp"
 #else 
-#define CLEAR "clear"
 #include "linuxra.hpp"
 #endif
 
@@ -22,7 +20,6 @@ class Jatekmenet
 {
 private:
     bool kilep;
-    //int cp;
     char** palya;
     int magassag;
     int szelsseg;
@@ -32,13 +29,13 @@ private:
     Gyujteni* coll;
 
 public:
-    Jatekmenet() { kilep = false; /*cp = 0;*/ palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
+    Jatekmenet() { kilep = false; palya = nullptr; magassag = 0; szelsseg = 0; jancsi = nullptr; boss = nullptr; coll = nullptr; }
     Jatekmenet(int jancsiX, int jancsiY, int jancsihp, bool van_e_boss, int bossX, int bossY, int seb, char** palya, int mennyi_coll)
     {
         //Jancsi letrehozasa
         jancsi = new Jatekos(jancsiX, jancsiY, jancsihp);
 
-        //boss letrehozasa
+        //boss letrehozasa, ha van
         if (van_e_boss)
         {
             boss = new Ellenseg(bossX, bossY, seb);
@@ -48,7 +45,7 @@ public:
             boss = nullptr;
         }
 
-        //gyujtogethetok letrehozasa
+        //gyujtogethetok letrehozasa, ha van
         if (mennyi_coll>0)
         {
             coll = new Gyujteni[mennyi_coll];
@@ -59,12 +56,12 @@ public:
         }
 
         kilep = false;
-        //cp = 0;
         palya = nullptr;
         magassag = 0;
         szelsseg = 0;
         coll_mennyiseg = mennyi_coll;
     }
+
     ~Jatekmenet()
     {
         delete jancsi;
@@ -86,10 +83,6 @@ public:
     int getBSebzes() { return boss->getSebzes(); }
 
     Jatekmenet& setKilep(bool kilepo);
-
-    //void mentes(Jatekmenet& jatekosunk);
-
-    //void mentes_be(std::string mentes_neve);
 
     Jatekmenet& beolvas(Jatekmenet& j, std::string palyanev);
 

@@ -40,8 +40,6 @@ Jatekmenet& Jatekmenet::beolvas(Jatekmenet& j, std::string palyanev)
     {
         //palya meretenek meghatarozasa
         while (std::getline(f, egysor)) {
-
-            //std::cout << egysor << std::endl;
             sorok++;
         }
         karakterek += egysor.length();
@@ -65,7 +63,6 @@ Jatekmenet& Jatekmenet::beolvas(Jatekmenet& j, std::string palyanev)
             }
             sor++;
         }
-
         f.close();
     }
     else

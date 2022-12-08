@@ -5,7 +5,7 @@ class Entity
 protected:
     int x, y;
 public:
-    Entity() { x = 0; x = 0; }
+    Entity() { x = 0; y = 0; }
     Entity(int koordX, int koordY)
     {
         x = koordX;
