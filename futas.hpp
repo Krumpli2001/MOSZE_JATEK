@@ -5,6 +5,8 @@
 
 int kezdes();
 
+void costum_palya();
+
 void story_be(std::string CH);
 
 void story_kerdesek(std::ifstream& f, int pos);

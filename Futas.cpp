@@ -51,6 +51,52 @@ int kezdes()
 	return -1;
 }
 
+void costum_palya()
+{
+	int J_X, J_Y;
+	std::cout << "\nJatekosod X koordinataja: ";  std::cin >> J_X;
+	std::cout << "\nJatekosod Y koordinataja: ";  std::cin >> J_Y;
+	std::cout << "A palyadon egy lyuk a cel vagy egy adott karakter?\n1 = lyuk\n2 = karakter";
+	char veg;
+	//do, while valamiert csak most jutott egyembe h igy is lehetett volna... - 2022.12.08. 23:24
+	do {
+		std::cin >> veg;
+	} while (veg != '1' and veg != '2');
+	bool van_e_boss = false;
+	int B_X = 0, B_Y = 0;
+	char veg_char = 'C';
+	if (veg == '2')
+	{
+		van_e_boss = true;
+		std::cout << "\nCel X koordinataja: ";  std::cin >> B_X;
+		std::cout << "\nCel Y koordinataja: ";  std::cin >> B_Y;
+		std::cout << "\nCel karaktere: ";  std::cin >> veg_char;
+	}
+	Jatekmenet* j = new Jatekmenet(J_X, J_Y, 1, van_e_boss, B_X, B_Y, 0, nullptr, 0);
+	std::cout << "\nIrd be a palyad nevet (legyen ugyan abban a mappaban ahol a jatek, vagy add meg a teljes eleresi utvonalat)\n";
+	std::string palya_neve;
+	std::cin >> palya_neve;
+	j->beolvas(*j, palya_neve);
+	bool fin = j->kiir(*j, veg_char);
+
+	delete j;
+	j = nullptr;
+	if (fin)
+	{
+		system(CLEAR);
+		std::cout << "Teljesitetted a labirintusodat! GG\n";
+		spause();
+		exit(0);
+	}
+	else
+	{
+		system(CLEAR);
+		std::cout << "Kileptel!\n";
+		spause();
+		exit(0);
+	}
+}
+
 //nagyobb story reszletekne - van press enter a vegen
 void story_be(std::string CH)
 {
@@ -219,6 +265,11 @@ void run(int fut)
 		if (fut == 2)
 		{
 			global_valtozok->mentes_be();
+		}
+
+		if (fut == 3)
+		{
+			costum_palya();
 		}
 
 		if (global_valtozok->getgCP() == 0)
